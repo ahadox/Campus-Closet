@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34511.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Campuscloset", "Campuscloset.csproj", "{D9693202-0578-4B7E-AA11-90C0BCE57695}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D9693202-0578-4B7E-AA11-90C0BCE57695}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9693202-0578-4B7E-AA11-90C0BCE57695}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9693202-0578-4B7E-AA11-90C0BCE57695}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{D9693202-0578-4B7E-AA11-90C0BCE57695}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9693202-0578-4B7E-AA11-90C0BCE57695}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9693202-0578-4B7E-AA11-90C0BCE57695}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FED10CED-656C-4962-890C-D177C89966C2}
+	EndGlobalSection
+EndGlobal
