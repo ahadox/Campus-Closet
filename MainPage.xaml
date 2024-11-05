@@ -3,6 +3,51 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Campuscloset.MainPage">
 
- 
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <!-- Swap or Sell Section -->
+            <Frame BackgroundColor="#EAEAEA" Padding="20" CornerRadius="10">
+                <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
+                    <Label Text="Ready to Swap or Sell?" FontSize="24" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                    <Button Text="Upload new item" BackgroundColor="#D1A95C" TextColor="White" CornerRadius="20"
+                            Padding="10,5" WidthRequest="180" HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Items for Sale/Swap -->
+            <Grid ColumnSpacing="10" RowSpacing="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Item 1 -->
+                <VerticalStackLayout>
+                    <Image Source="beige_casual_bag.png" HeightRequest="120" Aspect="AspectFill"/>
+                    <Label Text="Beige Casual Bag" FontAttributes="Bold" HorizontalOptions="Center"/>
+                    <Label Text="$5.00" HorizontalOptions="Center"/>
+                    <Button Text="Details" BackgroundColor="#D1A95C" TextColor="White" CornerRadius="15" WidthRequest="100" HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+
+                <!-- Item 2 -->
+                <VerticalStackLayout Grid.Column="1">
+                    <Image Source="black_casual_shirt.png" HeightRequest="120" Aspect="AspectFill"/>
+                    <Label Text="Black Casual Shirt" FontAttributes="Bold" HorizontalOptions="Center"/>
+                    <Label Text="$2.75" HorizontalOptions="Center"/>
+                    <Button Text="Details" BackgroundColor="#D1A95C" TextColor="White" CornerRadius="15" WidthRequest="100" HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+
+                <!-- Item 3 -->
+                <VerticalStackLayout Grid.Column="2">
+                    <Image Source="preloved_nikes.png" HeightRequest="120" Aspect="AspectFill"/>
+                    <Label Text="Pre-loved Nike's" FontAttributes="Bold" HorizontalOptions="Center"/>
+                    <Label Text="$10.50" HorizontalOptions="Center"/>
+                    <Button Text="Details" BackgroundColor="#D1A95C" TextColor="White" CornerRadius="15" WidthRequest="100" HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
 
 </ContentPage>
