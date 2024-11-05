@@ -1,61 +1,90 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Campuscloset.Settings"
+             BackgroundColor="#F7F5EF"
              Title="Settings">
 
     <ScrollView>
-        <StackLayout Padding="20" Spacing="20">
+        <VerticalStackLayout Padding="20" Spacing="20">
 
-            <!-- Change Photo Section -->
-            <Frame BorderColor="Gray" HeightRequest="150" WidthRequest="150" 
-                   BackgroundColor="#F0F0EB" CornerRadius="10" 
-                   HorizontalOptions="Center">
-                <Label Text="CHANGE PHOTO" VerticalOptions="Center" 
-                       HorizontalOptions="Center" TextColor="Gray"/>
-            </Frame>
+            <!-- Header Section for Centered Title -->
+            <Label Text="SETTINGS" 
+                   FontSize="Large" 
+                   FontAttributes="Bold" 
+                   HorizontalOptions="Center"
+                   TextColor="Black"/>
 
-            <!-- Settings Header -->
-            <Label Text="SETTINGS" FontSize="36" FontAttributes="Bold" 
-                   HorizontalOptions="Center" />
+            <!-- Main Content Grid Layout -->
+            <Grid RowDefinitions="Auto, *" ColumnDefinitions="Auto, *, *">
 
-            <!-- Name and Email Change Section -->
-            <StackLayout Spacing="10">
-                <Label Text="NAME" FontSize="18"/>
-                <Entry Placeholder="Change Name" BackgroundColor="#F0F0EB" />
+                <!-- Left Column - Change Photo Section -->
+                <StackLayout Grid.Row="0" Grid.Column="0" HorizontalOptions="Center">
+                    <Frame WidthRequest="300" HeightRequest="300" BackgroundColor="#EAE6DD" CornerRadius="10" HorizontalOptions="Center" VerticalOptions="Center">
+                        <Label Text="CHANGE PHOTO" 
+                               HorizontalOptions="Center" 
+                               VerticalOptions="Center" 
+                               TextColor="Gray"
+                               FontAttributes="Bold"/>
+                    </Frame>
+                </StackLayout>
 
-                <Label Text="EMAIL" FontSize="18" Margin="0,20,0,0"/>
-                <Entry Placeholder="Change Email" BackgroundColor="#F0F0EB" />
-            </StackLayout>
+                <!-- Right Column - Settings Form -->
+                <StackLayout Grid.Row="0" Grid.Column="2" Spacing="20">
 
-            <!-- Theme Selection -->
-            <StackLayout Orientation="Horizontal" Spacing="20" 
-                         Margin="0,20,0,0">
-                <Label Text="THEME" FontSize="18" VerticalOptions="Center"/>
-                <CheckBox />
-                <Label Text="LIGHT" FontSize="16" VerticalOptions="Center"/>
-                <CheckBox />
-                <Label Text="DARK" FontSize="16" VerticalOptions="Center"/>
-            </StackLayout>
+                    <!-- Name Section -->
+                    <StackLayout>
+                        <Label Text="NAME" 
+                               FontAttributes="Bold" 
+                               FontSize="Small" 
+                               TextColor="Black"/>
+                        <Entry Placeholder="Change Name" 
+                               BackgroundColor="#F1F1E8" 
+                               HeightRequest="40"/>
+                    </StackLayout>
 
-            <!-- Notification Selection -->
-            <StackLayout Orientation="Horizontal" Spacing="20" 
-                         Margin="0,20,0,0">
-                <Label Text="NOTIFICATION" FontSize="18" VerticalOptions="Center"/>
-                <CheckBox />
-                <Label Text="ON" FontSize="16" VerticalOptions="Center"/>
-                <CheckBox />
-                <Label Text="OFF" FontSize="16" VerticalOptions="Center"/>
-            </StackLayout>
+                    <!-- Email Section -->
+                    <StackLayout>
+                        <Label Text="EMAIL" 
+                               FontAttributes="Bold" 
+                               FontSize="Small" 
+                               TextColor="Black"/>
+                        <Entry Placeholder="Change Email" 
+                               BackgroundColor="#F1F1E8" 
+                               HeightRequest="40"/>
+                    </StackLayout>
 
-            <!-- Save & Continue Button -->
-            <Button Text="SAVE &amp; CONTINUE" 
-                    BackgroundColor="#B29A84" 
-                    TextColor="White" 
-                    FontAttributes="Bold"
-                    CornerRadius="10" 
-                    HeightRequest="50"
-                    HorizontalOptions="Center"
-                    VerticalOptions="End" />
-        </StackLayout>
+                    <!-- Theme Section -->
+                    <StackLayout Orientation="Horizontal" Spacing="20">
+                        <Label Text="THEME" 
+                               FontAttributes="Bold" 
+                               FontSize="Small" 
+                               TextColor="Black"/>
+                        <RadioButton Content="LIGHT" Value="Light" GroupName="Theme"/>
+                        <RadioButton Content="DARK" Value="Dark" GroupName="Theme"/>
+                    </StackLayout>
+
+                    <!-- Notification Section -->
+                    <StackLayout Orientation="Horizontal" Spacing="20">
+                        <Label Text="NOTIFICATION" 
+                               FontAttributes="Bold" 
+                               FontSize="Small" 
+                               TextColor="Black"/>
+                        <RadioButton Content="ON" Value="On" GroupName="Notification"/>
+                        <RadioButton Content="OFF" Value="Off" GroupName="Notification"/>
+                    </StackLayout>
+
+                    <!-- Save Button -->
+                    <Button Text="SAVE &amp; CONTINUE" 
+                            BackgroundColor="#BBA48A" 
+                            TextColor="White" 
+                            FontAttributes="Bold" 
+                            CornerRadius="10" 
+                            HeightRequest="50"
+                            HorizontalOptions="Start"/>
+                </StackLayout>
+
+            </Grid>
+
+        </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
