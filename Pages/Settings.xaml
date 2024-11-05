@@ -1,12 +1,61 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Campuscloset.Settings"
              Title="Settings">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="20">
+
+            <!-- Change Photo Section -->
+            <Frame BorderColor="Gray" HeightRequest="150" WidthRequest="150" 
+                   BackgroundColor="#F0F0EB" CornerRadius="10" 
+                   HorizontalOptions="Center">
+                <Label Text="CHANGE PHOTO" VerticalOptions="Center" 
+                       HorizontalOptions="Center" TextColor="Gray"/>
+            </Frame>
+
+            <!-- Settings Header -->
+            <Label Text="SETTINGS" FontSize="36" FontAttributes="Bold" 
+                   HorizontalOptions="Center" />
+
+            <!-- Name and Email Change Section -->
+            <StackLayout Spacing="10">
+                <Label Text="NAME" FontSize="18"/>
+                <Entry Placeholder="Change Name" BackgroundColor="#F0F0EB" />
+
+                <Label Text="EMAIL" FontSize="18" Margin="0,20,0,0"/>
+                <Entry Placeholder="Change Email" BackgroundColor="#F0F0EB" />
+            </StackLayout>
+
+            <!-- Theme Selection -->
+            <StackLayout Orientation="Horizontal" Spacing="20" 
+                         Margin="0,20,0,0">
+                <Label Text="THEME" FontSize="18" VerticalOptions="Center"/>
+                <CheckBox />
+                <Label Text="LIGHT" FontSize="16" VerticalOptions="Center"/>
+                <CheckBox />
+                <Label Text="DARK" FontSize="16" VerticalOptions="Center"/>
+            </StackLayout>
+
+            <!-- Notification Selection -->
+            <StackLayout Orientation="Horizontal" Spacing="20" 
+                         Margin="0,20,0,0">
+                <Label Text="NOTIFICATION" FontSize="18" VerticalOptions="Center"/>
+                <CheckBox />
+                <Label Text="ON" FontSize="16" VerticalOptions="Center"/>
+                <CheckBox />
+                <Label Text="OFF" FontSize="16" VerticalOptions="Center"/>
+            </StackLayout>
+
+            <!-- Save & Continue Button -->
+            <Button Text="SAVE &amp; CONTINUE" 
+                    BackgroundColor="#B29A84" 
+                    TextColor="White" 
+                    FontAttributes="Bold"
+                    CornerRadius="10" 
+                    HeightRequest="50"
+                    HorizontalOptions="Center"
+                    VerticalOptions="End" />
+        </StackLayout>
+    </ScrollView>
 </ContentPage>
