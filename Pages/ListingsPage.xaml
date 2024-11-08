@@ -9,6 +9,7 @@
 
             <!-- Item Title -->
             <Label Text="UPLOAD A NEW ITEM" FontSize="24" FontAttributes="Bold" TextColor="Black" HorizontalOptions="Center"/>
+            
             <!-- Content Section with Image on the Left -->
             <Grid ColumnDefinitions="300,*">
                 <!-- Image Section on the Left -->
