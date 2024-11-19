@@ -423,4 +423,17 @@
         <Setter Property="SelectedTabColor" Value="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray200}}" />
     </Style>
 
+    <Style TargetType="ContentPage">
+        <Setter Property="BackgroundColor" Value="{DynamicResource DynamicBackgroundColor}" />
+    </Style>
+
+    <Style TargetType="Label">
+        <Setter Property="TextColor" Value="{DynamicResource DynamicTextColor}" />
+    </Style>
+
+    <Style TargetType="Entry">
+        <Setter Property="TextColor" Value="{DynamicResource DynamicTextColor}" />
+        <Setter Property="BackgroundColor" Value="{DynamicResource DynamicBackgroundColor}" />
+    </Style>
+
 </ResourceDictionary>
