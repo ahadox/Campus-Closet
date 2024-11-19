@@ -6,8 +6,7 @@
         {
             InitializeComponent();
 
-
-            MainPage = new  UploadANewItem();
+            MainPage = new  MainPage();
         }
     }
 }
