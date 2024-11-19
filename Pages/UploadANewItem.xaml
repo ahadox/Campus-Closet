@@ -25,11 +25,11 @@
                 </Frame>
 
                 <!-- Details Section on the Right -->
-                <StackLayout Spacing="10" Grid.Column="1" Padding="10,0,0,0">
+                <StackLayout Spacing="10" Grid.Column="1" Padding="100,0,300,0">
 
                     <!-- Name Section -->
                     <Label Text="NAME OF THE ITEM" FontSize="16" TextColor="Black" FontAttributes="Bold"/>
-                    <Entry Placeholder="Click here to type... " FontSize="16" TextColor="Black" Keyboard="Numeric" BackgroundColor="Beige"/>
+                    <Entry Placeholder="Click here to type... " FontSize="16" TextColor="Black" Keyboard="Default" BackgroundColor="Beige"/>
 
                     <!-- Price Section -->
                     <Label Text="PRICE" FontSize="16" TextColor="Black" FontAttributes="Bold"/>
@@ -37,20 +37,41 @@
 
                     <!-- Email Section -->
                     <Label Text="USM EMAIL FOR THE BUYER TO CONTACT" FontSize="16" TextColor="Black" FontAttributes="Bold"/>
-                    <Entry Placeholder="your.name@usm.edu " FontSize="16" TextColor="Black" Keyboard="Numeric" BackgroundColor="Beige"/>
+                    <Entry Placeholder="your.name@usm.edu " FontSize="16" TextColor="Black" Keyboard="Default" BackgroundColor="Beige"/>
 
                     <!-- Condition Section -->
                     <Label Text="CONDITION OF THE ITEM" TextColor="Black" FontSize="16" FontAttributes="Bold"/>
-                    <HorizontalStackLayout Spacing="10">
-                        <CheckBox Color="Beige"/>
-                        <Label Text="New" TextColor="Black" VerticalOptions="Center"/>
-                        <CheckBox Color="Beige"/>
-                        <Label Text="Used - Like New" TextColor="Black" VerticalOptions="Center"/>
-                        <CheckBox Color="Beige"/>
-                        <Label Text="Used - Good" TextColor="Black" VerticalOptions="Center"/>
-                        <CheckBox Color="Beige"/>
-                        <Label Text="Used - Fair" TextColor="Black" VerticalOptions="Center"/>
-                    </HorizontalStackLayout>
+
+                    <VerticalStackLayout Spacing="10">
+                        <HorizontalStackLayout Spacing="10">
+                            <RadioButton GroupName="ItemCondition" 
+                     Value="New" 
+                     Content="New" 
+                     TextColor="Black" 
+                     VerticalOptions="Center" />
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout Spacing="10">
+                            <RadioButton GroupName="ItemCondition" 
+                     Value="UsedLikeNew" 
+                     Content="Used - Like New" 
+                     TextColor="Black" 
+                     VerticalOptions="Center" />
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout Spacing="10">
+                            <RadioButton GroupName="ItemCondition" 
+                     Value="UsedGood" 
+                     Content="Used - Good" 
+                     TextColor="Black" 
+                     VerticalOptions="Center" />
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout Spacing="10">
+                            <RadioButton GroupName="ItemCondition" 
+                     Value="UsedFair" 
+                     Content="Used - Fair" 
+                     TextColor="Black" 
+                     VerticalOptions="Center" />
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
 
                     <!-- Description Section -->
                     <Label Text="DESCRIPTION OF THE ITEM" FontSize="16" FontAttributes="Bold" TextColor="Black"/>
