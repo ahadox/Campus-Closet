@@ -7,11 +7,7 @@
             InitializeComponent();
 
 
-            MainPage = new AppShell();
-
-       
-
-        
+            MainPage = new  UploadANewItem();
         }
     }
 }
