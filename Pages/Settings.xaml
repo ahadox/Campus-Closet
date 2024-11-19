@@ -1,35 +1,31 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Campuscloset.Settings"
-             BackgroundColor="#F7F5EF"
-             Title="Settings">
+             BackgroundColor="#F7F5EF">
 
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="20">
 
-            <!-- Header Section for Centered Title -->
-            <Label Text="SETTINGS" 
-                   FontSize="Large" 
-                   FontAttributes="Bold" 
+            <!-- Header Section with Specific Image -->
+            <Image Source="settings_image.png"
                    HorizontalOptions="Center"
-                   TextColor="Black"/>
+                   HeightRequest="80"/>
 
             <!-- Main Content Grid Layout -->
-            <Grid RowDefinitions="Auto, *" ColumnDefinitions="Auto, *, *">
+            <Grid RowDefinitions="Auto, *" ColumnDefinitions="*, 2*">
 
                 <!-- Left Column - Change Photo Section -->
                 <StackLayout Grid.Row="0" Grid.Column="0" HorizontalOptions="Center">
-                    <Frame WidthRequest="300" HeightRequest="300" BackgroundColor="#EAE6DD" CornerRadius="10" HorizontalOptions="Center" VerticalOptions="Center">
-                        <Label Text="CHANGE PHOTO" 
-                               HorizontalOptions="Center" 
-                               VerticalOptions="Center" 
-                               TextColor="Gray"
-                               FontAttributes="Bold"/>
-                    </Frame>
+                    <ImageButton Source="change_photo_image.png"
+                                 BackgroundColor="#EAE6DD"
+                                 HeightRequest="200"
+                                 WidthRequest="200"
+                                 CornerRadius="10"
+                                 Clicked="OnChangePhotoClicked"/>
                 </StackLayout>
 
                 <!-- Right Column - Settings Form -->
-                <StackLayout Grid.Row="0" Grid.Column="2" Spacing="20">
+                <VerticalStackLayout Grid.Row="0" Grid.Column="1" Spacing="20" Padding="20,0">
 
                     <!-- Name Section -->
                     <StackLayout>
@@ -37,9 +33,11 @@
                                FontAttributes="Bold" 
                                FontSize="Small" 
                                TextColor="Black"/>
-                        <Entry Placeholder="Change Name" 
-                               BackgroundColor="#F1F1E8" 
-                               HeightRequest="40"/>
+                        <Frame CornerRadius="10" Padding="0" BackgroundColor="#F1F1E8" HasShadow="False" HeightRequest="40">
+                            <Entry Placeholder="Change Name" 
+                                   BackgroundColor="Transparent"
+                                   VerticalOptions="Center"/>
+                        </Frame>
                     </StackLayout>
 
                     <!-- Email Section -->
@@ -48,9 +46,11 @@
                                FontAttributes="Bold" 
                                FontSize="Small" 
                                TextColor="Black"/>
-                        <Entry Placeholder="Change Email" 
-                               BackgroundColor="#F1F1E8" 
-                               HeightRequest="40"/>
+                        <Frame CornerRadius="10" Padding="0" BackgroundColor="#F1F1E8" HasShadow="False" HeightRequest="40">
+                            <Entry Placeholder="Change Email" 
+                                   BackgroundColor="Transparent"
+                                   VerticalOptions="Center"/>
+                        </Frame>
                     </StackLayout>
 
                     <!-- Theme Section -->
@@ -81,7 +81,7 @@
                             CornerRadius="10" 
                             HeightRequest="50"
                             HorizontalOptions="Start"/>
-                </StackLayout>
+                </VerticalStackLayout>
 
             </Grid>
 
