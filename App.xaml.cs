@@ -1,4 +1,7 @@
-﻿namespace Campuscloset
+﻿using System.Net;
+using Campuscloset.Pages;
+
+namespace Campuscloset
 {
     public partial class App : Application
     {
@@ -6,11 +9,8 @@
         {
             InitializeComponent();
 
-
-
             MainPage = new  AppShell();
 
-           
 
         }
     }

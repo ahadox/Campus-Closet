@@ -1,8 +1,14 @@
 using System.ComponentModel;
 using System.Windows.Input;
 
-public class UploadItemViewModel : INotifyPropertyChanged
+namespace Campuscloset.Pages;
+
+public partial class UploadItem : ContentPage
 {
+	public UploadItem()
+	{
+		InitializeComponent();
+	}
     public event PropertyChangedEventHandler PropertyChanged;
 
     private string itemName;

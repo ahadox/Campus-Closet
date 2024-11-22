@@ -42,7 +42,7 @@
     <SolidColorBrush x:Key="Gray600Brush" Color="{StaticResource Gray600}"/>
     <SolidColorBrush x:Key="Gray900Brush" Color="{StaticResource Gray900}"/>
     <SolidColorBrush x:Key="Gray950Brush" Color="{StaticResource Gray950}"/>
-    
+
     <!-- Light Theme Colors -->
     <Color x:Key="BackgroundColorLight">#F7F5EF</Color>
     <Color x:Key="TextColorLight">#000000</Color>
@@ -54,5 +54,6 @@
     <!-- Dynamic Resources -->
     <Color x:Key="DynamicBackgroundColor"></Color>
     <Color x:Key="DynamicTextColor"></Color>
+
 
 </ResourceDictionary>
