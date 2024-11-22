@@ -1,7 +1,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Campuscloset.Settings"
-             BackgroundColor="#F7F5EF">
+             BackgroundColor="{DynamicResource DynamicBackgroundColor}">
 
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="20">
@@ -16,7 +16,13 @@
 
                 <!-- Left Column - Change Photo Section -->
                 <StackLayout Grid.Row="0" Grid.Column="0" HorizontalOptions="Center">
-                    <ImageButton x:Name="ProfilePhotoButton" Source="change_photo_image.png" BackgroundColor="#EAE6DD" HeightRequest="200" WidthRequest="200" CornerRadius="10" Clicked="OnChangePhotoClicked"/>
+                    <ImageButton x:Name="ProfilePhotoButton" 
+                                 Source="change_photo_image.png" 
+                                 BackgroundColor="{DynamicResource DynamicBackgroundColor}" 
+                                 HeightRequest="200" 
+                                 WidthRequest="200" 
+                                 CornerRadius="10" 
+                                 Clicked="OnChangePhotoClicked"/>
                 </StackLayout>
 
                 <!-- Right Column - Settings Form -->
@@ -27,9 +33,17 @@
                         <Label Text="NAME" 
                                FontAttributes="Bold" 
                                FontSize="Small" 
-                               TextColor="Black"/>
-                        <Frame CornerRadius="10" Padding="0" BackgroundColor="#F1F1E8" HasShadow="False" HeightRequest="40">
-                            <Entry x:Name="NameEntry" Placeholder="Change Name" BackgroundColor="Transparent" VerticalOptions="Center"/>
+                               TextColor="{DynamicResource DynamicTextColor}"/>
+                        <Frame CornerRadius="10" 
+                               Padding="0" 
+                               BackgroundColor="{DynamicResource DynamicBackgroundColor}" 
+                               HasShadow="False" 
+                               HeightRequest="40">
+                            <Entry x:Name="NameEntry" 
+                                   Placeholder="Change Name" 
+                                   BackgroundColor="Transparent" 
+                                   TextColor="{DynamicResource DynamicTextColor}" 
+                                   VerticalOptions="Center"/>
                         </Frame>
                     </StackLayout>
 
@@ -38,9 +52,17 @@
                         <Label Text="EMAIL" 
                                FontAttributes="Bold" 
                                FontSize="Small" 
-                               TextColor="Black"/>
-                        <Frame CornerRadius="10" Padding="0" BackgroundColor="#F1F1E8" HasShadow="False" HeightRequest="40">
-                            <Entry x:Name="EmailEntry" Placeholder="Change Email" BackgroundColor="Transparent" VerticalOptions="Center"/>
+                               TextColor="{DynamicResource DynamicTextColor}"/>
+                        <Frame CornerRadius="10" 
+                               Padding="0" 
+                               BackgroundColor="{DynamicResource DynamicBackgroundColor}" 
+                               HasShadow="False" 
+                               HeightRequest="40">
+                            <Entry x:Name="EmailEntry" 
+                                   Placeholder="Change Email" 
+                                   BackgroundColor="Transparent" 
+                                   TextColor="{DynamicResource DynamicTextColor}" 
+                                   VerticalOptions="Center"/>
                         </Frame>
                     </StackLayout>
 
@@ -49,9 +71,15 @@
                         <Label Text="THEME" 
                                FontAttributes="Bold" 
                                FontSize="Small" 
-                               TextColor="Black"/>
-                        <RadioButton Content="LIGHT" Value="Light" GroupName="Theme" CheckedChanged="OnThemeChanged"/>
-                        <RadioButton Content="DARK" Value="Dark" GroupName="Theme" CheckedChanged="OnThemeChanged"/>
+                               TextColor="{DynamicResource DynamicTextColor}"/>
+                        <RadioButton Content="LIGHT" 
+                                     Value="Light" 
+                                     GroupName="Theme" 
+                                     CheckedChanged="OnThemeChanged"/>
+                        <RadioButton Content="DARK" 
+                                     Value="Dark" 
+                                     GroupName="Theme" 
+                                     CheckedChanged="OnThemeChanged"/>
                     </StackLayout>
 
                     <!-- Notification Section -->
@@ -59,13 +87,26 @@
                         <Label Text="NOTIFICATION" 
                                FontAttributes="Bold" 
                                FontSize="Small" 
-                               TextColor="Black"/>
-                        <RadioButton Content="ON" Value="On" GroupName="Notification" CheckedChanged="OnNotificationChanged"/>
-                        <RadioButton Content="OFF" Value="Off" GroupName="Notification" CheckedChanged="OnNotificationChanged"/>
+                               TextColor="{DynamicResource DynamicTextColor}"/>
+                        <RadioButton Content="ON" 
+                                     Value="On" 
+                                     GroupName="Notification" 
+                                     CheckedChanged="OnNotificationChanged"/>
+                        <RadioButton Content="OFF" 
+                                     Value="Off" 
+                                     GroupName="Notification" 
+                                     CheckedChanged="OnNotificationChanged"/>
                     </StackLayout>
 
                     <!-- Save Button -->
-                    <Button Text="SAVE &amp; CONTINUE" BackgroundColor="#BBA48A" TextColor="White" FontAttributes="Bold" CornerRadius="10" HeightRequest="50" HorizontalOptions="Start" Clicked="OnSaveButtonClicked"/>
+                    <Button Text="SAVE &amp; CONTINUE" 
+                            BackgroundColor="{DynamicResource DynamicBackgroundColor}" 
+                            TextColor="{DynamicResource DynamicTextColor}" 
+                            FontAttributes="Bold" 
+                            CornerRadius="10" 
+                            HeightRequest="50" 
+                            HorizontalOptions="Start" 
+                            Clicked="OnSaveButtonClicked"/>
                 </VerticalStackLayout>
 
             </Grid>

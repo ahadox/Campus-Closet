@@ -19,16 +19,21 @@ namespace Campuscloset
 
                 if (selectedTheme == "LIGHT")
                 {
+                    // Update to Light Theme
                     Application.Current.Resources["DynamicBackgroundColor"] = Application.Current.Resources["BackgroundColorLight"];
                     Application.Current.Resources["DynamicTextColor"] = Application.Current.Resources["TextColorLight"];
                 }
                 else if (selectedTheme == "DARK")
                 {
+                    // Update to Dark Theme
                     Application.Current.Resources["DynamicBackgroundColor"] = Application.Current.Resources["BackgroundColorDark"];
                     Application.Current.Resources["DynamicTextColor"] = Application.Current.Resources["TextColorDark"];
                 }
             }
         }
+
+
+
 
 
 
