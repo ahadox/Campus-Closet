@@ -6,7 +6,12 @@
         {
             InitializeComponent();
 
-            MainPage = new  Settings();
+
+            MainPage = new  AppShell();
+
+           
+
+
         }
     }
 }
