@@ -13,15 +13,22 @@
             <!-- Content Section with Image on the Left -->
             <Grid ColumnDefinitions="300,*">
                 <!-- Image Section on the Left -->
-                <Frame Grid.Column="0" BorderColor="LightGray" Padding="5" WidthRequest="300" HeightRequest="300" HorizontalOptions="Start">
-                    <Grid>
-                        <!-- Placeholder Image (Optional) -->
-                        <Image Source="nike_shoes.png" Aspect="AspectFit" IsVisible="False"/>
+                <Frame Grid.Column="0" BorderColor="LightGray" BackgroundColor="Beige" Padding="5" WidthRequest="300" HeightRequest="300" HorizontalOptions="Start">
+                    <VerticalStackLayout Spacing="10" HorizontalOptions="Center" VerticalOptions="Center">
+                        <!-- Display the Uploaded Image -->
+                        <Image Source="{Binding ItemImage}" 
+                               HeightRequest="230" 
+                               WidthRequest="300" 
+                               HorizontalOptions="Center" 
+                               VerticalOptions="Center" />
 
-                        <!-- Centered Add Image Button -->
-                        <Button Text="Upload Image" FontSize="14" BackgroundColor="Beige" 
-                                TextColor="Black" Command="{Binding AddImageCommand}"/>
-                    </Grid>
+                        <!-- Upload Image Button -->
+                        <Button Text="Upload Image"
+                                Command="{Binding AddImageCommand}" 
+                                HorizontalOptions="Center" 
+                                VerticalOptions="Center"
+                                BackgroundColor="White"/>
+                    </VerticalStackLayout>
                 </Frame>
 
                 <!-- Details Section on the Right -->
@@ -45,31 +52,31 @@
                     <VerticalStackLayout Spacing="10">
                         <HorizontalStackLayout Spacing="10">
                             <RadioButton GroupName="ItemCondition" 
-                     Value="New" 
-                     Content="New" 
-                     TextColor="Black" 
-                     VerticalOptions="Center" />
+                                         Value="New" 
+                                         Content="New" 
+                                         TextColor="Black" 
+                                         VerticalOptions="Center" />
                         </HorizontalStackLayout>
                         <HorizontalStackLayout Spacing="10">
                             <RadioButton GroupName="ItemCondition" 
-                     Value="UsedLikeNew" 
-                     Content="Used - Like New" 
-                     TextColor="Black" 
-                     VerticalOptions="Center" />
+                                         Value="UsedLikeNew" 
+                                         Content="Used - Like New" 
+                                         TextColor="Black" 
+                                         VerticalOptions="Center" />
                         </HorizontalStackLayout>
                         <HorizontalStackLayout Spacing="10">
                             <RadioButton GroupName="ItemCondition" 
-                     Value="UsedGood" 
-                     Content="Used - Good" 
-                     TextColor="Black" 
-                     VerticalOptions="Center" />
+                                         Value="UsedGood" 
+                                         Content="Used - Good" 
+                                         TextColor="Black" 
+                                         VerticalOptions="Center" />
                         </HorizontalStackLayout>
                         <HorizontalStackLayout Spacing="10">
                             <RadioButton GroupName="ItemCondition" 
-                     Value="UsedFair" 
-                     Content="Used - Fair" 
-                     TextColor="Black" 
-                     VerticalOptions="Center" />
+                                         Value="UsedFair" 
+                                         Content="Used - Fair" 
+                                         TextColor="Black" 
+                                         VerticalOptions="Center" />
                         </HorizontalStackLayout>
                     </VerticalStackLayout>
 
