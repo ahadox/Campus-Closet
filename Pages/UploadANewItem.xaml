@@ -24,6 +24,7 @@
 
                         <!-- Upload Image Button -->
                         <Button Text="Upload Image"
+                                TextColor="Black"
                                 Command="{Binding AddImageCommand}" 
                                 HorizontalOptions="Center" 
                                 VerticalOptions="Center"
@@ -36,15 +37,15 @@
 
                     <!-- Name Section -->
                     <Label Text="NAME OF THE ITEM" FontSize="16" TextColor="Black" FontAttributes="Bold"/>
-                    <Entry Placeholder="Click here to type... " FontSize="16" TextColor="Black" Keyboard="Default" BackgroundColor="Beige"/>
+                    <Entry Placeholder="Click here to type... " PlaceholderColor="Black" FontSize="16" TextColor="Black" Keyboard="Default" BackgroundColor="Beige"/>
 
                     <!-- Price Section -->
                     <Label Text="PRICE" FontSize="16" TextColor="Black" FontAttributes="Bold"/>
-                    <Entry Placeholder="$ 0.00" FontSize="16" TextColor="Black" Keyboard="Numeric" BackgroundColor="Beige"/>
+                    <Entry Placeholder="$ 0.00" PlaceholderColor="Black" FontSize="16" TextColor="Black" Keyboard="Numeric" BackgroundColor="Beige"/>
 
                     <!-- Email Section -->
                     <Label Text="USM EMAIL FOR THE BUYER TO CONTACT" FontSize="16" TextColor="Black" FontAttributes="Bold"/>
-                    <Entry Placeholder="your.name@usm.edu " FontSize="16" TextColor="Black" Keyboard="Default" BackgroundColor="Beige"/>
+                    <Entry Placeholder="your.name@usm.edu " PlaceholderColor="Black" FontSize="16" TextColor="Black" Keyboard="Default" BackgroundColor="Beige"/>
 
                     <!-- Condition Section -->
                     <Label Text="CONDITION OF THE ITEM" TextColor="Black" FontSize="16" FontAttributes="Bold"/>
@@ -82,7 +83,7 @@
 
                     <!-- Description Section -->
                     <Label Text="DESCRIPTION OF THE ITEM" FontSize="16" FontAttributes="Bold" TextColor="Black"/>
-                    <Editor Placeholder="Enter item description here..."
+                    <Editor Placeholder="Enter item description here..." PlaceholderColor="Black"
                             FontSize="16" BackgroundColor="Beige" TextColor="Black" HeightRequest="100"/>
                 </StackLayout>
             </Grid>

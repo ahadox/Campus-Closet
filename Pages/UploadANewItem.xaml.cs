@@ -1,96 +1,116 @@
+using Microsoft.Maui.Controls;
+using Microsoft.Maui.Storage;
 using System.ComponentModel;
 using System.Windows.Input;
 
-public class UploadItemViewModel : INotifyPropertyChanged
+namespace Campuscloset
 {
-    public event PropertyChangedEventHandler PropertyChanged;
-
-    private string itemName;
-    private string price;
-    private string email;
-    private string itemCondition;
-    private string description;
-    private ImageSource itemImage;
-    private bool isUploadButtonVisible = true; // Default to true
-
-    public string ItemName
+    public partial class UploadANewItem : ContentPage, INotifyPropertyChanged
     {
-        get => itemName;
-        set
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private string itemName;
+        private string price;
+        private string email;
+        private string itemCondition;
+        private string description;
+        private ImageSource itemImage;
+        private bool isUploadFormVisible = false;
+        private bool isUploadButtonVisible = true;
+
+        public string ItemName
         {
-            itemName = value;
-            OnPropertyChanged(nameof(ItemName));
+            get => itemName;
+            set
+            {
+                itemName = value;
+                OnPropertyChanged(nameof(ItemName));
+            }
         }
-    }
 
-    public string Price
-    {
-        get => price;
-        set
+        public string Price
         {
-            price = value;
-            OnPropertyChanged(nameof(Price));
+            get => price;
+            set
+            {
+                price = value;
+                OnPropertyChanged(nameof(Price));
+            }
         }
-    }
 
-    public string Email
-    {
-        get => email;
-        set
+        public string Email
         {
-            email = value;
-            OnPropertyChanged(nameof(Email));
+            get => email;
+            set
+            {
+                email = value;
+                OnPropertyChanged(nameof(Email));
+            }
         }
-    }
 
-    public string ItemCondition
-    {
-        get => itemCondition;
-        set
+        public string ItemCondition
         {
-            itemCondition = value;
-            OnPropertyChanged(nameof(ItemCondition));
+            get => itemCondition;
+            set
+            {
+                itemCondition = value;
+                OnPropertyChanged(nameof(ItemCondition));
+            }
         }
-    }
 
-    public string Description
-    {
-        get => description;
-        set
+        public string Description
         {
-            description = value;
-            OnPropertyChanged(nameof(Description));
+            get => description;
+            set
+            {
+                description = value;
+                OnPropertyChanged(nameof(Description));
+            }
         }
-    }
 
-    public ImageSource ItemImage
-    {
-        get => itemImage;
-        set
+        public ImageSource ItemImage
         {
-            itemImage = value;
-            OnPropertyChanged(nameof(ItemImage));
-            IsUploadButtonVisible = itemImage == null; // Hide button if image is set
+            get => itemImage;
+            set
+            {
+                itemImage = value;
+                OnPropertyChanged(nameof(ItemImage));
+                IsUploadButtonVisible = itemImage == null; // Hide button if image is set
+            }
         }
-    }
 
-    public bool IsUploadButtonVisible
-    {
-        get => isUploadButtonVisible;
-        set
+        public bool IsUploadFormVisible
         {
-            isUploadButtonVisible = value;
-            OnPropertyChanged(nameof(IsUploadButtonVisible));
+            get => isUploadFormVisible;
+            set
+            {
+                isUploadFormVisible = value;
+                OnPropertyChanged(nameof(IsUploadFormVisible));
+            }
         }
-    }
 
-    public ICommand AddImageCommand => new Command(OnAddImage);
+        public bool IsUploadButtonVisible
+        {
+            get => isUploadButtonVisible;
+            set
+            {
+                isUploadButtonVisible = value;
+                OnPropertyChanged(nameof(IsUploadButtonVisible));
+            }
+        }
 
-    public ICommand ConfirmUploadCommand => new Command(OnConfirmUpload);
+        public ICommand AddImageCommand => new Command(OnAddImage);
+        public ICommand ConfirmUploadCommand => new Command(OnConfirmUpload);
 
-    private async void OnAddImage()
-    {
-        try
+        public ICommand NavigateToUploadPageCommand => new Command(() => IsUploadFormVisible = true);
+
+        public UploadANewItem()
+        {
+            InitializeComponent();
+            BindingContext = this;
+        }
+
+        private async void OnAddImage()
         {
             var result = await FilePicker.PickAsync(new PickOptions
             {
@@ -100,40 +120,34 @@ public class UploadItemViewModel : INotifyPropertyChanged
 
             if (result != null)
             {
-                // Update the ItemImage property to display the selected image
                 ItemImage = ImageSource.FromFile(result.FullPath);
             }
         }
-        catch (Exception ex)
+
+        private async void OnConfirmUpload()
         {
-            await Application.Current.MainPage.DisplayAlert("Error", $"Image upload failed: {ex.Message}", "OK");
-        }
-    }
+            if (string.IsNullOrEmpty(ItemName) || string.IsNullOrEmpty(Price) || string.IsNullOrEmpty(Email) ||
+                string.IsNullOrEmpty(ItemCondition) || string.IsNullOrEmpty(Description) || ItemImage == null)
+            {
+                await DisplayAlert("Error", "Please fill in all fields, including an image.", "OK");
+                return;
+            }
 
-    private async void OnConfirmUpload()
-    {
-        if (string.IsNullOrEmpty(ItemName) || string.IsNullOrEmpty(Price) || string.IsNullOrEmpty(Email) ||
-            string.IsNullOrEmpty(ItemCondition) || string.IsNullOrEmpty(Description) || ItemImage == null)
+            await DisplayAlert("Success", "Item uploaded successfully.", "OK");
+
+            // Reset fields after upload
+            ItemName = string.Empty;
+            Price = string.Empty;
+            Email = string.Empty;
+            ItemCondition = string.Empty;
+            Description = string.Empty;
+            ItemImage = null;
+            IsUploadFormVisible = false; // Hide the form after upload
+        }
+
+        protected virtual void OnPropertyChanged(string propertyName)
         {
-            await Application.Current.MainPage.DisplayAlert("Error", "Please fill in all fields, including an image.", "OK");
-            return;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
-        await Application.Current.MainPage.DisplayAlert("Success", "Item uploaded successfully.", "OK");
-
-        // Reset fields after upload
-        ItemName = string.Empty;
-        Price = string.Empty;
-        Email = string.Empty;
-        ItemCondition = string.Empty;
-        Description = string.Empty;
-        ItemImage = null;
-
-        IsUploadButtonVisible = true; // Show the button again
-    }
-
-    protected virtual void OnPropertyChanged(string propertyName)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }
