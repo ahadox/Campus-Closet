@@ -7,9 +7,54 @@
     Shell.FlyoutBehavior="Disabled"
     Title="Campuscloset">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <Shell.TitleView>
+        <Grid BackgroundColor="White" Padding="10" ColumnSpacing="20">
+            <!-- Left Side: Sign Up -->
+            <HorizontalStackLayout VerticalOptions="Center" Grid.Column="0">
+                <Image Source="profile_icon.png" HeightRequest="24" Margin="0,0,5,0"/>
+                <Label Text="Sign Up" FontSize="16" VerticalTextAlignment="Center" TextColor="#C38752"/>
+            </HorizontalStackLayout>
+
+            <!-- Center: Navigation Tabs -->
+            <HorizontalStackLayout HorizontalOptions="EndAndExpand" VerticalOptions="Center" Spacing="30">
+                <Label Text="HOME"
+                       FontSize="16"
+                       FontAttributes="Bold"
+                       VerticalTextAlignment="Center"
+                       TextColor="Black">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnHomeTapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+
+                <Label Text="SETTINGS"
+                       FontSize="16"
+                       FontAttributes="Bold"
+                       VerticalTextAlignment="Center"
+                       TextColor="Black">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnSettingsTapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+
+                <Label Text="YOUR LISTINGS"
+                       FontSize="16"
+                       FontAttributes="Bold"
+                       VerticalTextAlignment="Center"
+                       TextColor="Black">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnListingsTapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </HorizontalStackLayout>
+        </Grid>
+    </Shell.TitleView>
+
+
+    <!-- Pages -->
+    <ShellContent Title="Home" ContentTemplate="{DataTemplate local:MainPage}" Route="MainPage" />
+    <ShellContent Title="Settings" ContentTemplate="{DataTemplate local:Settings}" Route="Settings" />
+    <ShellContent Title="Your Listings" ContentTemplate="{DataTemplate local:ListingsPage}" Route="ListingsPage" />
+
 
 </Shell>

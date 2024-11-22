@@ -6,7 +6,12 @@
         {
             InitializeComponent();
 
-            MainPage = new UploadANewItem();
+
+
+            MainPage = new  AppShell();
+
+           
+
         }
     }
 }
