@@ -423,6 +423,13 @@
         <Setter Property="SelectedTabColor" Value="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray200}}" />
     </Style>
 
+    <Style x:Key="HeaderLabelStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="24" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="TextColor" Value="{DynamicResource DynamicTextColor}" />
+    </Style>
+
+    <!-- Application-wide styles -->
     <Style TargetType="ContentPage">
         <Setter Property="BackgroundColor" Value="{DynamicResource DynamicBackgroundColor}" />
     </Style>
