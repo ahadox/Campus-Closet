@@ -1,6 +1,7 @@
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Storage;
 using System.ComponentModel;
+using System.ComponentModel.Design;
 using System.Windows.Input;
 
 namespace Campuscloset
