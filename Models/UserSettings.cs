@@ -12,5 +12,7 @@ namespace Campuscloset.Models
         public bool Notifications { get; set; }
         public string UserName { get; set; }
         public string UserEmail { get; set; }
+        public string ProfilePhotoPath { get; set; }
+
     }
 }

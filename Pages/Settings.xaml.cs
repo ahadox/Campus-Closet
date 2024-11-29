@@ -51,6 +51,11 @@ namespace Campuscloset.Pages
             {
                 ((RadioButton)this.FindByName("OffRadioButton")).IsChecked = true;
             }
+            // Load saved profile photo
+            if (!string.IsNullOrWhiteSpace(settings.ProfilePhotoPath) && File.Exists(settings.ProfilePhotoPath))
+            {
+                ProfilePhotoButton.Source = ImageSource.FromFile(settings.ProfilePhotoPath);
+            }
         }
 
         // Event handler for Theme selection
@@ -97,13 +102,19 @@ namespace Campuscloset.Pages
                 return;
             }
 
+            // Get the current profile photo path
+            var currentPhotoPath = Preferences.ContainsKey("UserPhotoPath")
+                ? Preferences.Get("UserPhotoPath", string.Empty)
+                : string.Empty;
+
             // Save to JSON using UserSettings
             var settings = new UserSettings
             {
                 UserName = name,
                 UserEmail = email,
                 Theme = ((RadioButton)this.FindByName("DarkRadioButton")).IsChecked ? "Dark" : "Light",
-                Notifications = ((RadioButton)this.FindByName("OnRadioButton")).IsChecked
+                Notifications = ((RadioButton)this.FindByName("OnRadioButton")).IsChecked,
+                ProfilePhotoPath = currentPhotoPath // Include the photo path
             };
 
             // Use the JSON storage service to save the settings
@@ -113,12 +124,15 @@ namespace Campuscloset.Pages
             await DisplayAlert("Success", "Settings saved successfully.", "OK");
         }
 
+
         // Event handler for Photo change
         private async void OnChangePhotoClicked(object sender, EventArgs e)
         {
             var result = await FilePicker.PickAsync(new PickOptions
             {
-                PickerTitle = "Select a photo"
+                PickerTitle = "Select a photo",
+                FileTypes = FilePickerFileType.Images // Allow only image files
+
             });
 
             if (result != null)
@@ -129,8 +143,10 @@ namespace Campuscloset.Pages
                 // Update ImageButton Source to display the new photo
                 ProfilePhotoButton.Source = ImageSource.FromFile(filePath);
 
-                // Save photo path if needed
-                Preferences.Set("UserPhotoPath", filePath);
+                // Save the file path to settings
+                var settings = _storageService.LoadUserSettings();
+                settings.ProfilePhotoPath = filePath; // Add ProfilePhotoPath to UserSettings
+                _storageService.SaveUserSettings(settings);
             }
         }
     }
