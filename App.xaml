@@ -9,6 +9,9 @@
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
 
             </ResourceDictionary.MergedDictionaries>
+            <!-- Dynamic Theme Resources -->
+            <Color x:Key="DynamicBackgroundColor" x:Static="{x:StaticResource BackgroundColorLight}" />
+            <Color x:Key="DynamicTextColor" x:Static="{x:StaticResource TextColorLight}" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>
