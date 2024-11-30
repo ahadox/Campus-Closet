@@ -1,12 +1,21 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Campuscloset.Pages.ListingsPage"
-             Title="ListingsPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             Title="Listings"
+             BackgroundColor="Beige">
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="70" Spacing="50" BackgroundColor="Beige">
+                <!-- Page Title -->
+                <Label Text="YOUR LISTINGS" FontSize="30" FontAttributes="Bold" TextColor="Black" HorizontalOptions="Center" />
+
+                <!-- Dynamic Grid to display items -->
+                <Grid x:Name="ItemsGrid" ColumnSpacing="70" RowSpacing="70" BackgroundColor="Beige">
+                    <!-- Items dynamically added in code-behind -->
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
 </ContentPage>
