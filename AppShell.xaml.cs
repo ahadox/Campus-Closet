@@ -9,6 +9,8 @@ public partial class AppShell : Shell
         
     }
 
+
+
     private async void OnHomeTapped(object sender, EventArgs e)
     {
         await Shell.Current.GoToAsync("//MainPage");

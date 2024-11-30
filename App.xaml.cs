@@ -2,6 +2,7 @@
 using Campuscloset.Pages;
 using Campuscloset.Services;
 using Campuscloset.Models;
+using System.IO;
 
 
 namespace Campuscloset
@@ -9,7 +10,7 @@ namespace Campuscloset
     public partial class App : Application
     {
         private readonly JsonStorageService _storageService;
-
+        public static DatabaseService Database { get; private set; }
         public App()
         {
             InitializeComponent();
@@ -23,15 +24,50 @@ namespace Campuscloset
             // Apply the theme based on saved settings
             if (settings.Theme == "Dark")
             {
-                Application.Current.Resources["DynamicBackgroundColor"] = Application.Current.Resources["BackgroundColorDark"];
-                Application.Current.Resources["DynamicTextColor"] = Application.Current.Resources["TextColorDark"];
+                if (Application.Current.Resources.ContainsKey("BackgroundColorDark"))
+                {
+                    Application.Current.Resources["DynamicBackgroundColor"] = Application.Current.Resources["BackgroundColorDark"];
+                }
+                else
+                {
+                    Console.WriteLine("BackgroundColorDark is missing.");
+                }
+
+                if (Application.Current.Resources.ContainsKey("TextColorDark"))
+                {
+                    Application.Current.Resources["DynamicTextColor"] = Application.Current.Resources["TextColorDark"];
+                }
+                else
+                {
+                    Console.WriteLine("TextColorDark is missing.");
+                }
             }
             else
             {
-                Application.Current.Resources["DynamicBackgroundColor"] = Application.Current.Resources["BackgroundColorLight"];
-                Application.Current.Resources["DynamicTextColor"] = Application.Current.Resources["TextColorLight"];
+                if (Application.Current.Resources.ContainsKey("BackgroundColorLight"))
+                {
+                    Application.Current.Resources["DynamicBackgroundColor"] = Application.Current.Resources["BackgroundColorLight"];
+                }
+                else
+                {
+                    Console.WriteLine("BackgroundColorLight is missing.");
+                }
+
+                if (Application.Current.Resources.ContainsKey("TextColorLight"))
+                {
+                    Application.Current.Resources["DynamicTextColor"] = Application.Current.Resources["TextColorLight"];
+                }
+                else
+                {
+                    Console.WriteLine("TextColorLight is missing.");
+                }
             }
 
+
+            string dbPath = Path.Combine(FileSystem.AppDataDirectory, "CampusCloset.db3");
+            Database = new DatabaseService(dbPath);
+
+         
             // Set the main page
             MainPage = new AppShell();
 

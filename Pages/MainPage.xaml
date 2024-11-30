@@ -2,52 +2,86 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Campuscloset.Pages.MainPage">
+    
+    
+    <Grid RowDefinitions="Auto, Auto, *" Padding="20" Background="Beige">
+        <!-- Header Section -->
+        <Grid Grid.Row="1" HeightRequest="200">
+            <Image Source="images.jpg" 
+                   Aspect="Fill" 
+                   HorizontalOptions="FillAndExpand" 
+                   VerticalOptions="FillAndExpand"
+                   Opacity="0.7" />
+            <!-- Slight opacity for readability -->
 
-    <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="20">
+            <!-- Overlay Content -->
+            <StackLayout Spacing="15" Padding="0,20">
+                <Label Text="Ready to Swap or Sell?" 
+                       FontSize="28" 
+                       FontAttributes="Bold" 
+                       HorizontalOptions="Center"
+                       TextColor="White" />
 
-            <!-- Swap or Sell Section -->
-            <Frame BackgroundColor="#EAEAEA" Padding="20" CornerRadius="10">
-                <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
-                    <Label Text="Ready to Swap or Sell?" FontSize="24" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
-                    <Button Text="Upload new item" BackgroundColor="#D1A95C" TextColor="White" CornerRadius="20"
-                            Padding="10,5" WidthRequest="180" HorizontalOptions="Center"/>
-                </VerticalStackLayout>
-            </Frame>
+                <!-- Upload Button -->
+                <Button Text="Upload new item"
+                        BackgroundColor="#D3AC69"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        CornerRadius="25"
+                        HeightRequest="50"
+                        WidthRequest="200"
+                        HorizontalOptions="Center"
+                        Clicked="Button_Clicked" />
+            </StackLayout>
 
-            <!-- Items for Sale/Swap -->
-            <Grid ColumnSpacing="10" RowSpacing="10">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
+        </Grid>
+        
+        
 
-                <!-- Item 1 -->
-                <VerticalStackLayout>
-                    <Image Source="beige_casual_bag.png" HeightRequest="120" Aspect="AspectFill"/>
-                    <Label Text="Beige Casual Bag" FontAttributes="Bold" HorizontalOptions="Center"/>
-                    <Label Text="$5.00" HorizontalOptions="Center"/>
-                    <Button Text="Details" BackgroundColor="#D1A95C" TextColor="White" CornerRadius="15" WidthRequest="100" HorizontalOptions="Center"/>
-                </VerticalStackLayout>
+        <!-- Items Grid -->
+        <CollectionView ItemsSource="{Binding AllItems}" 
+                            Margin="0,20"  Grid.Row="2"
+                            SelectionMode="None">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" 
+                                      Span="2" 
+                                      VerticalItemSpacing="15" 
+                                      HorizontalItemSpacing="15" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame BackgroundColor="Beige" BorderColor="Transparent" CornerRadius="10" Padding="10" HasShadow="True" HeightRequest="400" WidthRequest="400">
+                        <StackLayout Spacing="5">
+                            <!-- Item Image -->
+                            <Image Source="{Binding ImagePath}" 
+                                       Aspect="AspectFit" MaximumHeightRequest="300"
+                                        />
 
-                <!-- Item 2 -->
-                <VerticalStackLayout Grid.Column="1">
-                    <Image Source="black_casual_shirt.png" HeightRequest="120" Aspect="AspectFill"/>
-                    <Label Text="Black Casual Shirt" FontAttributes="Bold" HorizontalOptions="Center"/>
-                    <Label Text="$2.75" HorizontalOptions="Center"/>
-                    <Button Text="Details" BackgroundColor="#D1A95C" TextColor="White" CornerRadius="15" WidthRequest="100" HorizontalOptions="Center"/>
-                </VerticalStackLayout>
+                            <!-- Item Name -->
+                            <Label Text="{Binding Name}" 
+                                       FontSize="16"
+                                       FontAttributes="Bold" 
+                                       TextColor="Black" 
+                                       Margin="0,5,0,0" />
 
-                <!-- Item 3 -->
-                <VerticalStackLayout Grid.Column="2">
-                    <Image Source="preloved_nikes.png" HeightRequest="120" Aspect="AspectFill"/>
-                    <Label Text="Pre-loved Nike's" FontAttributes="Bold" HorizontalOptions="Center"/>
-                    <Label Text="$10.50" HorizontalOptions="Center"/>
-                    <Button Text="Details" BackgroundColor="#D1A95C" TextColor="White" CornerRadius="15" WidthRequest="100" HorizontalOptions="Center"/>
-                </VerticalStackLayout>
-            </Grid>
-        </VerticalStackLayout>
-    </ScrollView>
+                            <!-- Item Price -->
+                            <Label Text="{Binding Price, StringFormat='${0:F2}'}" 
+                                       FontSize="14"
+                                       TextColor="#D3AC69" />
 
+                            <!-- Details Button -->
+                            <Button Text="Details"
+                                        BackgroundColor="#D3AC69"
+                                        TextColor="White"
+                                        CornerRadius="10"
+                                        HeightRequest="30" 
+                                        FontSize="12" 
+                                        HorizontalOptions="Center" 
+                                        Command="{Binding NavigateToDetailsCommand}" />
+                        </StackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
 </ContentPage>
