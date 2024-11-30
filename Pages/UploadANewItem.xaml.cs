@@ -1,8 +1,7 @@
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Storage;
 using System.Windows.Input;
-
-
+using Campuscloset.Models;
 
 namespace Campuscloset.Pages
 {
@@ -125,11 +124,71 @@ namespace Campuscloset.Pages
 
         private async void OnConfirmUpload()
         {
-            if (string.IsNullOrEmpty(ItemName) || string.IsNullOrEmpty(Price) || string.IsNullOrEmpty(Email) ||
-                string.IsNullOrEmpty(ItemCondition) || string.IsNullOrEmpty(Description) || ItemImage == null)
+
+            // Debug output to check the state of all fields
+            System.Diagnostics.Debug.WriteLine($"ItemName: {ItemName}");
+            System.Diagnostics.Debug.WriteLine($"Price: {Price}");
+            System.Diagnostics.Debug.WriteLine($"Email: {Email}");
+            System.Diagnostics.Debug.WriteLine($"ItemCondition: {ItemCondition}");
+            System.Diagnostics.Debug.WriteLine($"Description: {Description}");
+            System.Diagnostics.Debug.WriteLine($"ItemImage: {ItemImage}");
+
+            // Validate all fields, including the image
+            if (string.IsNullOrWhiteSpace(ItemName))
             {
-                await DisplayAlert("Error", "Please fill in all fields, including an image.", "OK");
+                await DisplayAlert("Error", "Item Name is required.", "OK");
                 return;
+            }
+
+            if (string.IsNullOrWhiteSpace(Price))
+            {
+                await DisplayAlert("Error", "Price is required.", "OK");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(Email))
+            {
+                await DisplayAlert("Error", "Email is required.", "OK");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(ItemCondition))
+            {
+                await DisplayAlert("Error", "Item Condition is required.", "OK");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(Description))
+            {
+                await DisplayAlert("Error", "Description is required.", "OK");
+                return;
+            }
+
+            if (ItemImage == null)
+            {
+                await DisplayAlert("Error", "Please upload an image.", "OK");
+                return;
+            }
+
+
+            // Proceed with creating the new item and saving it
+            var newItem = new Item
+            {
+                Name = ItemName,
+                Price = Price,
+                Email = Email,
+                Condition = ItemCondition,
+                Description = Description,
+                ImagePath = ((FileImageSource)ItemImage)?.File
+            };
+
+            await App.Database.AddItemAsync(newItem); // Save to database
+
+            // Immediately query the database to verify
+            var items = await App.Database.GetItemsAsync();
+            foreach (var item in items)
+            {
+                System.Diagnostics.Debug.WriteLine($"Item in Database - Name: {item.Name}, Price: {item.Price}");
             }
 
             await DisplayAlert("Success", "Item uploaded successfully.", "OK");
@@ -141,7 +200,18 @@ namespace Campuscloset.Pages
             ItemCondition = string.Empty;
             Description = string.Empty;
             ItemImage = null;
-            IsUploadFormVisible = false; // Hide the form after upload
+            IsUploadFormVisible = false;
+        }
+
+
+
+        private void OnConditionSelected(object sender, CheckedChangedEventArgs e)
+        {
+            if (e.Value)
+            {
+                var radioButton = sender as RadioButton;
+                ItemCondition = radioButton?.Content.ToString();
+            }
         }
 
         protected override void OnPropertyChanged(string propertyName = null)
