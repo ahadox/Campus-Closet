@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Campuscloset.Pages.OTPPage"
              Title="OTPPage"
-             Shell.NavBarIsVisible="False">
+             Shell.NavBarIsVisible="False" BackgroundColor="Beige">
     <Shell.BackButtonBehavior>
         <BackButtonBehavior IsVisible="False" />
     </Shell.BackButtonBehavior>
@@ -28,7 +28,7 @@
             FontSize="18" 
             Clicked="VerifyOtpButton" 
             BackgroundColor="#3D3D3D" 
-            TextColor="Beige" 
+            TextColor="#D3AC69" 
             HorizontalOptions="Center" />
 
         <!-- Error Message -->

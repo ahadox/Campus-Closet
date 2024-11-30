@@ -55,6 +55,18 @@ namespace Campuscloset.Pages
             await Shell.Current.GoToAsync("//UploadANewItem");
         }
 
+        private async void Button_Clicked_1(object sender, EventArgs e)
+        {
+            // Get the selected item from the BindingContext of the button
+            var button = sender as Button;
+            var selectedItem = button.BindingContext as Item;
 
+            // Navigate to the details page and pass the item data
+            if (selectedItem != null)
+            {
+                await Shell.Current.GoToAsync("//UploadANewItem");
+            }
+
+        }
     }
 }

@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Campuscloset.Pages.LoginPage"
              Title="LoginPage"
-             Shell.NavBarIsVisible="False">
+             Shell.NavBarIsVisible="False" BackgroundColor="Beige">
     <Shell.BackButtonBehavior>
         <BackButtonBehavior IsVisible="False" />
     </Shell.BackButtonBehavior>
@@ -25,20 +25,20 @@
               Clicked="SignUpButtonClicked"
               FontSize="16" 
               TextColor="#757575" 
-              BackgroundColor="Beige" 
+              BackgroundColor="#D3AC69" 
               HorizontalOptions="Center"
          />
 
         <!-- Form Fields -->
         <VerticalStackLayout Spacing="15" WidthRequest="300">
-            <Entry Placeholder="USM Email" 
+            <Entry Placeholder="USM Email" PlaceholderColor="Black" BackgroundColor="White"
                    x:Name="txtmail"
                    TextColor="#3D3D3D" FontSize="16" 
-                   BackgroundColor="White" Keyboard="Email" />
-            <Entry Placeholder="Password" x:Name="txtword"
+                   Keyboard="Email" />
+            <Entry Placeholder="Password" x:Name="txtword" PlaceholderColor="Black" BackgroundColor="White"
                    IsPassword="True" 
                    TextColor="#3D3D3D" FontSize="16" 
-                   BackgroundColor="White" />
+                    />
         </VerticalStackLayout>
 
         <!-- Login Button -->

@@ -77,7 +77,7 @@
                                         HeightRequest="30" 
                                         FontSize="12" 
                                         HorizontalOptions="Center" 
-                                        Command="{Binding NavigateToDetailsCommand}" />
+                                        Clicked="Button_Clicked_1" />
                         </StackLayout>
                     </Frame>
                 </DataTemplate>
