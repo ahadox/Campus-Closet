@@ -31,7 +31,7 @@ public partial class LoginPage : ContentPage
 
     private bool ValidateCredentials(string enteredEmail, string enteredPassword)
     {
-        string filePath = @"C:\Users\w10171527\Documents\CSC 317\Confidentials.txt";
+        string filePath = @"C:\Users\ahad1\Downloads\confidentials.txt";
 
         try
         {

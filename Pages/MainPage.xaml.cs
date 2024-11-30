@@ -21,6 +21,14 @@ namespace Campuscloset.Pages
 
         public Command NavigateToUploadCommand { get; }
 
+        private async void NavigateToDetails(Item selectedItem)
+        {
+            await Shell.Current.GoToAsync(nameof(DetailsPage), true, new Dictionary<string, object>
+    {
+        { "SelectedItem", selectedItem }
+    });
+        }
+
         public MainPage()
         {
             InitializeComponent();
