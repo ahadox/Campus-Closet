@@ -11,7 +11,9 @@ namespace Campuscloset
 
         public App()
         {
+
             InitializeComponent();
+
 
             // Initialize the storage service
             _storageService = new JsonStorageService();

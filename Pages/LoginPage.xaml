@@ -1,7 +1,60 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Campuscloset.LoginPage"
-             Title="LoginPage">
-    
+             x:Class="Campuscloset.Pages.LoginPage"
+             Title="LoginPage"
+             Shell.NavBarIsVisible="False">
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="False" />
+    </Shell.BackButtonBehavior>
+
+    <VerticalStackLayout Spacing="20" Padding="30" HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
+
+        <!-- Login Title -->
+        <Label 
+            Text="Welcome Back!" 
+            FontSize="32"  
+            FontAttributes="Bold" 
+            TextColor="#3D3D3D" 
+            HorizontalTextAlignment="Center" 
+         />
+
+        <!-- Sign Up Redirect Button -->
+        <Button 
+              Text="New here? Sign Up" 
+              Clicked="SignUpButtonClicked"
+              FontSize="16" 
+              TextColor="#757575" 
+              BackgroundColor="Beige" 
+              HorizontalOptions="Center"
+         />
+
+        <!-- Form Fields -->
+        <VerticalStackLayout Spacing="15" WidthRequest="300">
+            <Entry Placeholder="USM Email" 
+                   x:Name="txtmail"
+                   TextColor="#3D3D3D" FontSize="16" 
+                   BackgroundColor="White" Keyboard="Email" />
+            <Entry Placeholder="Password" x:Name="txtword"
+                   IsPassword="True" 
+                   TextColor="#3D3D3D" FontSize="16" 
+                   BackgroundColor="White" />
+        </VerticalStackLayout>
+
+        <!-- Login Button -->
+        <Button 
+            Text="Login" 
+            Clicked="LoginButton_Clicked"
+            BackgroundColor="Beige" 
+            TextColor="#3D3D3D" 
+            FontSize="18" 
+            CornerRadius="5" 
+            WidthRequest="100" 
+            HorizontalOptions="Center" 
+         />
+
+        <Label x:Name="lblLoginError" Text="Incorrect Email or Password!" 
+           TextColor="Red" IsVisible="False" HorizontalOptions="Center"/>
+
+    </VerticalStackLayout>
 </ContentPage>
