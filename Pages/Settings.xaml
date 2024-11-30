@@ -1,6 +1,6 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Campuscloset.Settings"
+             x:Class="Campuscloset.Pages.Settings"
              BackgroundColor="{DynamicResource DynamicBackgroundColor}">
 
     <ScrollView>
@@ -72,11 +72,13 @@
                                FontAttributes="Bold" 
                                FontSize="Small" 
                                TextColor="{DynamicResource DynamicTextColor}"/>
-                        <RadioButton Content="LIGHT" 
+                        <RadioButton x:Name="LightRadioButton"
+                                     Content="LIGHT" 
                                      Value="Light" 
                                      GroupName="Theme" 
                                      CheckedChanged="OnThemeChanged"/>
-                        <RadioButton Content="DARK" 
+                        <RadioButton x:Name="DarkRadioButton"
+                                     Content="DARK" 
                                      Value="Dark" 
                                      GroupName="Theme" 
                                      CheckedChanged="OnThemeChanged"/>
@@ -88,11 +90,13 @@
                                FontAttributes="Bold" 
                                FontSize="Small" 
                                TextColor="{DynamicResource DynamicTextColor}"/>
-                        <RadioButton Content="ON" 
+                        <RadioButton x:Name="OnRadioButton"
+                                     Content="ON" 
                                      Value="On" 
                                      GroupName="Notification" 
                                      CheckedChanged="OnNotificationChanged"/>
-                        <RadioButton Content="OFF" 
+                        <RadioButton x:Name="OffRadioButton"
+                                     Content="OFF" 
                                      Value="Off" 
                                      GroupName="Notification" 
                                      CheckedChanged="OnNotificationChanged"/>

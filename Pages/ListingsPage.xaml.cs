@@ -1,4 +1,4 @@
-namespace Campuscloset;
+namespace Campuscloset.Pages;
 
 public partial class ListingsPage : ContentPage
 {
