@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Campuscloset.Pages.SignUpPage"
+             Title="SignUpPage"
+             BackgroundColor="White"
+             Shell.NavBarIsVisible="False">
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="False" />
+    </Shell.BackButtonBehavior>
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="30" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" >
+
+
+
+
+            <Label 
+            Text="Sign Up!" 
+            FontSize="32"  
+            FontAttributes="Bold" 
+            TextColor="#757575" 
+            HorizontalTextAlignment ="Center" 
+         />
+
+
+            <Button 
+              Text="Already Registered? Login" 
+              Clicked="AlreadyRegisteredButton"
+              FontSize="16" 
+              TextColor="#3D3D3D" 
+              BackgroundColor="Beige" 
+              HorizontalOptions="Center"
+              
+         />
+
+
+            <!-- Form Fields -->
+            <VerticalStackLayout Spacing="15" WidthRequest="300">
+                <Entry Placeholder="Preferred Name" x:Name="txtNewName"
+                   TextColor="#3D3D3D" FontSize="16" 
+                   BackgroundColor="White" />
+                <Entry Placeholder="USM Email" x:Name="txtNewEmail"
+                   TextColor="#3D3D3D" FontSize="16" 
+                   BackgroundColor="White" Keyboard="Email"/>
+                <Entry Placeholder="Preferred Password" x:Name="txtPassword" 
+                   IsPassword="True" TextColor="#3D3D3D" 
+                   FontSize="16" BackgroundColor="White" 
+                   />
+            </VerticalStackLayout>
+
+            <!-- Sign Up Button -->
+            <Button Text="Sign Up" Clicked="SignUpButton" BackgroundColor="Beige" TextColor="#3D3D3D"
+                FontSize="18" CornerRadius="5" 
+                WidthRequest="100" HorizontalOptions="Center" />
+            <Label 
+            x:Name="lblError" 
+            Text="Invalid email. Please use a valid USM email address."
+            FontSize="14" 
+            TextColor="Red"
+            HorizontalTextAlignment="Center"
+            IsVisible="False" />
+            <Label 
+            x:Name="failedotp" 
+            Text="OTP Not Successful. Please use a valid USM email address."
+            FontSize="14" 
+            TextColor="Red"
+            HorizontalTextAlignment="Center"
+            IsVisible="False" />
+
+            <!-- Error Label -->
+            <Label 
+         x:Name="lblMissingInfo" 
+         Text="Missing Important Information. Please Fill Out All Fields."
+         FontSize="14" 
+         TextColor="Red"
+         HorizontalTextAlignment="Center"
+         IsVisible="False" />
+
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -13,7 +13,9 @@ namespace Campuscloset
         public static DatabaseService Database { get; private set; }
         public App()
         {
+
             InitializeComponent();
+
 
             // Initialize the storage service
             _storageService = new JsonStorageService();
