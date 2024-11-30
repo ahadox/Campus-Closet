@@ -1,4 +1,4 @@
-﻿namespace Campuscloset.Pages
+﻿namespace Campuscloset
 {
     public partial class MainPage : ContentPage
     {
