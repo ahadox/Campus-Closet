@@ -64,7 +64,7 @@ namespace Campuscloset.Pages
             // Navigate to the details page and pass the item data
             if (selectedItem != null)
             {
-                await Shell.Current.GoToAsync("//UploadANewItem");
+                await Shell.Current.GoToAsync("//DetailsPage");
             }
 
         }

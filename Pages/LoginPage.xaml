@@ -45,7 +45,7 @@
         <Button 
             Text="Login" 
             Clicked="LoginButton_Clicked"
-            BackgroundColor="Beige" 
+            BackgroundColor="#D3AC69" 
             TextColor="#3D3D3D" 
             FontSize="18" 
             CornerRadius="5" 
