@@ -2,51 +2,108 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Campuscloset.Pages.DetailsPage"
-             Title="Item Details">
+             Title="Item Details"
+             BackgroundColor="{DynamicResource DynamicBackgroundColor}">
+
     <ScrollView>
-        <StackLayout Spacing="20" Padding="20" BackgroundColor="Beige">
-            <!-- Item Details -->
-            <Label Text="ITEM DETAILS"
-           FontSize="22"
-           FontAttributes="Bold"
-           HorizontalOptions="Center" TextColor="Black"/>
+        <Grid Padding="50" RowSpacing="40" ColumnSpacing="80">
+            <!-- Title Section -->
+            <Label Grid.Row="0" Grid.Column="0" 
+                   Text="ITEM DETAILS"
+                   FontSize="50"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   TextColor="{DynamicResource DynamicTextColor}"
+                   Margin="0,0,0,30" />
+            <!-- Increased margin below the title -->
 
-            <!-- Item Image -->
+            <!-- Item Name Section -->
+            <Label Grid.Row="1" Grid.Column="0"
+                   Text="{Binding Name}"
+                   FontSize="35"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   TextColor="{DynamicResource DynamicTextColor}"
+                   Margin="0,60,0,40" />
+            <!-- Increased spacing above and below the item name -->
 
-            <Frame  BorderColor="#D3AC69" Padding="5"  MaximumHeightRequest="500" MaximumWidthRequest="500" >
-                <Image Source="{Binding ImagePath}" Aspect="AspectFit" />
-            </Frame>
+            <!-- Content Section -->
+            <Grid RowDefinitions="Auto" ColumnDefinitions="2*, 3*" Padding="10">
+                <!-- Item Image -->
+                <Image Grid.Row="0" Grid.Column="0"
+                       Source="{Binding ImagePath}"
+                       Aspect="AspectFit"
+                       HeightRequest="500"
+                       WidthRequest="500"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
 
-            <!-- Item Name -->
-            <Label Text="{Binding Name}"
-           FontSize="20"
-           FontAttributes="Bold"
-           TextColor="#333333"
-           HorizontalOptions="Center" />
+                <!-- Item Details -->
+                <VerticalStackLayout Grid.Row="0" Grid.Column="1" Spacing="40">
+                    <!-- Increased spacing between sections -->
 
-            <!-- Item Price -->
-            <Label Text="{Binding Price, StringFormat='Price: ${0:F2}'}"
-           FontSize="18"
-           TextColor="#D3AC69"
-           HorizontalOptions="Center" />
+                    <!-- Item Price -->
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="PRICE"
+                               FontSize="23"
+                               FontAttributes="Bold"
+                               TextColor="{DynamicResource DynamicTextColor}" 
+                               Margin="0,120,0,10" />
 
-            <!-- Condition of the Item -->
-            <Label Text="Condition of the Item: " TextColor="Black" FontSize="16" />
-            <Label Text="{Binding Condition}" FontSize="18" />
+                        <Frame BorderColor="#D3AC69"
+                               CornerRadius="10"
+                               Padding="15"
+                               HasShadow="True"
+                               BackgroundColor="{DynamicResource DynamicBackgroundColor}">
+                            <Label Text="{Binding Price, StringFormat='${0:F2}'}"
+                                   FontSize="28"
+                                   TextColor="#D3AC69" />
+                        </Frame>
+                    </VerticalStackLayout>
 
+                    <!-- Condition -->
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="CONDITION OF THE ITEM"
+                               FontSize="26"
+                               FontAttributes="Bold"
+                               TextColor="{DynamicResource DynamicTextColor}" />
+                        <Label Text="{Binding Condition}"
+                               FontSize="26"
+                               TextColor="{DynamicResource DynamicTextColor}" />
+                    </VerticalStackLayout>
 
-            <!-- Description -->
-            <Label Text="Description of the Item:" TextColor="Black" FontSize="16" />
-            <Editor Text="{Binding Description}" IsReadOnly="True" />
+                    <!-- Description -->
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="DESCRIPTION OF THE ITEM"
+                               FontSize="26"
+                               FontAttributes="Bold"
+                               TextColor="{DynamicResource DynamicTextColor}" />
+                        <Frame BorderColor="#D3AC69"
+                               CornerRadius="10"
+                               Padding="20"
+                               HasShadow="True"
+                               BackgroundColor="{DynamicResource DynamicBackgroundColor}">
+                            <Label Text="{Binding Description}"
+                                   FontSize="24"
+                                   TextColor="{DynamicResource DynamicTextColor}" />
+                        </Frame>
+                    </VerticalStackLayout>
 
-            <!-- Seller Email -->
-            <Label Text="{Binding Email}"
-            FontSize="16"
-            TextColor="#333333"
-   
-            Padding="10"
-            HorizontalOptions="Center" />
-        </StackLayout>
+                    <!-- Seller Email -->
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="SELLER EMAIL:"
+                               FontSize="26"
+                               FontAttributes="Bold"
+                               TextColor="{DynamicResource DynamicTextColor}" />
+                        <Button Text="{Binding Email}"
+                                FontSize="24"
+                                BackgroundColor="#D3AC69"
+                                TextColor="White"
+                                CornerRadius="10"
+                                HorizontalOptions="Start" />
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Grid>
+        </Grid>
     </ScrollView>
-    
 </ContentPage>
