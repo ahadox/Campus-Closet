@@ -2,11 +2,51 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Campuscloset.Pages.DetailsPage"
-             Title="DetailsPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
+             Title="Item Details">
+    <ScrollView>
+        <StackLayout Spacing="20" Padding="20" BackgroundColor="Beige">
+            <!-- Item Details -->
+            <Label Text="ITEM DETAILS"
+           FontSize="22"
+           FontAttributes="Bold"
+           HorizontalOptions="Center" TextColor="Black"/>
+
+            <!-- Item Image -->
+
+            <Frame  BorderColor="#D3AC69" Padding="5"  MaximumHeightRequest="500" MaximumWidthRequest="500" >
+                <Image Source="{Binding ImagePath}" Aspect="AspectFit" />
+            </Frame>
+
+            <!-- Item Name -->
+            <Label Text="{Binding Name}"
+           FontSize="20"
+           FontAttributes="Bold"
+           TextColor="#333333"
+           HorizontalOptions="Center" />
+
+            <!-- Item Price -->
+            <Label Text="{Binding Price, StringFormat='Price: ${0:F2}'}"
+           FontSize="18"
+           TextColor="#D3AC69"
+           HorizontalOptions="Center" />
+
+            <!-- Condition of the Item -->
+            <Label Text="Condition of the Item: " TextColor="Black" FontSize="16" />
+            <Label Text="{Binding Condition}" FontSize="18" />
+
+
+            <!-- Description -->
+            <Label Text="Description of the Item:" TextColor="Black" FontSize="16" />
+            <Editor Text="{Binding Description}" IsReadOnly="True" />
+
+            <!-- Seller Email -->
+            <Label Text="{Binding Email}"
+            FontSize="16"
+            TextColor="#333333"
+   
+            Padding="10"
             HorizontalOptions="Center" />
-    </VerticalStackLayout>
+        </StackLayout>
+    </ScrollView>
+    
 </ContentPage>
