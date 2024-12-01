@@ -30,6 +30,11 @@ namespace Campuscloset.Services
             }
         }
 
+        public async Task DeleteItemAsync(Item item)
+        {
+            await _database.DeleteAsync(item);
+        }
+
 
         public Task<List<Item>> GetItemsAsync()
         {

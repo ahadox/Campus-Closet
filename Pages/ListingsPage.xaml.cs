@@ -67,9 +67,10 @@ namespace Campuscloset.Pages
             var itemImage = new Image
             {
                 Source = string.IsNullOrWhiteSpace(item.ImagePath) ? "placeholder.png" : item.ImagePath,
-                VerticalOptions = LayoutOptions.Fill,
+                HeightRequest = 200,
+                WidthRequest = 200,
                 Aspect = Aspect.AspectFill,
-                HorizontalOptions = LayoutOptions.Fill
+                HorizontalOptions = LayoutOptions.Center
             };
 
             // Create a label for the item name
@@ -91,25 +92,50 @@ namespace Campuscloset.Pages
                 HorizontalTextAlignment = TextAlignment.Center
             };
 
-            // Arrange the image and labels in a vertical stack
+            // Create the "Mark as Sold" button
+            var markAsSoldButton = new Button
+            {
+                Text = "Mark as Sold",
+                BackgroundColor = Colors.Red,
+                TextColor = Colors.White,
+                CornerRadius = 5,
+                HeightRequest = 40,
+                FontSize = 12,
+                HorizontalOptions = LayoutOptions.Center
+            };
+
+            // Set the button click event handler
+            markAsSoldButton.Clicked += async (sender, e) => await OnMarkAsSoldClicked(item);
+
+            // Arrange the image, labels, and button in a vertical stack
             var cardLayout = new StackLayout
             {
                 Spacing = 5,
                 Padding = new Thickness(5),
-                Children = { itemImage, nameLabel, priceLabel }
+                Children = { itemImage, nameLabel, priceLabel, markAsSoldButton }
             };
 
             // Wrap the layout in a frame to create a card effect
             return new Frame
             {
-                
                 CornerRadius = 8,
                 HasShadow = true,
                 Padding = new Thickness(5),
                 Content = cardLayout,
-                
-
+                BackgroundColor = Colors.Beige
             };
+        }
+
+        private async Task OnMarkAsSoldClicked(Item item)
+        {
+            // Remove the item from the database
+            await App.Database.DeleteItemAsync(item);
+
+            // Reload the items after the item is deleted
+            await LoadItemsAsync();
+
+            // Display a confirmation message
+            await DisplayAlert("Success", "Item marked as sold and removed from your listings.", "OK");
         }
     }
 }
