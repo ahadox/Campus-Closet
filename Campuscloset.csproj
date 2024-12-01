@@ -60,6 +60,8 @@
 
 	  <None Remove="Resources\Images\add_photo.png" />
 
+	  <None Remove="Resources\Images\bg3.jpg" />
+
 	  <None Remove="Resources\Images\image1.jpg" />
 
 	  <None Remove="Resources\Images\images.jpg" />

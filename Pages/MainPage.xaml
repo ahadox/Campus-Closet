@@ -7,7 +7,7 @@
     <Grid RowDefinitions="Auto, Auto, *" Padding="20" BackgroundColor="{DynamicResource DynamicBackgroundColor}">
         <!-- Header Section -->
         <Grid Grid.Row="1" HeightRequest="200">
-            <Image Source="images.jpg" 
+            <Image Source="bg3.jpg" 
                    Aspect="Fill" 
                    HorizontalOptions="FillAndExpand" 
                    VerticalOptions="FillAndExpand"
