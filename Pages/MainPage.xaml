@@ -57,27 +57,34 @@
                                        Aspect="AspectFit" MaximumHeightRequest="300"
                                         />
 
-                            <!-- Item Name -->
-                            <Label Text="{Binding Name}" 
-                                       FontSize="16"
-                                       FontAttributes="Bold" 
-                                       TextColor="Black" 
-                                       Margin="0,5,0,0" />
+                            <Grid ColumnDefinitions="*, Auto" VerticalOptions="Center">
+                                <!-- Left Section: Texts -->
+                                <StackLayout Grid.Column="0" Spacing="5" VerticalOptions="Center">
+                                    <!-- Item Name -->
+                                    <Label Text="{Binding Name}" 
+                   FontSize="16"
+                   FontAttributes="Bold" 
+                   TextColor="Black" 
+                   Margin="0,5,0,0" />
 
-                            <!-- Item Price -->
-                            <Label Text="{Binding Price, StringFormat='${0:F2}'}" 
-                                       FontSize="14"
-                                       TextColor="#D3AC69" />
+                                    <!-- Item Price -->
+                                    <Label Text="{Binding Price, StringFormat='${0:F2}'}" 
+                   FontSize="14"
+                   TextColor="#D3AC69" />
+                                </StackLayout>
 
-                            <!-- Details Button -->
-                            <Button Text="Details"
-                                        BackgroundColor="#D3AC69"
-                                        TextColor="White"
-                                        CornerRadius="10"
-                                        HeightRequest="30" 
-                                        FontSize="12" 
-                                        HorizontalOptions="Center" 
-                                        Clicked="Button_Clicked_1" />
+                                <!-- Right Section: Button -->
+                                <Button Text="Details"
+                Grid.Column="1"
+                BackgroundColor="#D3AC69"
+                TextColor="White"
+                CornerRadius="10"
+                HeightRequest="30" 
+                FontSize="12" 
+                VerticalOptions="Center"
+                HorizontalOptions="End"
+                Clicked="Button_Clicked_1" />
+                            </Grid>
                         </StackLayout>
                     </Frame>
                 </DataTemplate>
