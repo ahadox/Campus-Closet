@@ -7,7 +7,7 @@
 
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout Padding="70" Spacing="50" BackgroundColor="{DynamicResource DynamicBackgroundColor}">
+            <StackLayout Padding="70" Spacing="50" >
                 <!-- Page Title -->
                 <Label Text="YOUR LISTINGS" 
                        FontSize="30" 
@@ -19,7 +19,7 @@
                 <Grid x:Name="ItemsGrid" 
                       ColumnSpacing="70" 
                       RowSpacing="70" 
-                      BackgroundColor="{DynamicResource DynamicBackgroundColor}">
+                     >
                     <!-- Items dynamically added in code-behind -->
                 </Grid>
             </StackLayout>

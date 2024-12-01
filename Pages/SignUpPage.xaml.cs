@@ -71,7 +71,7 @@ namespace Campuscloset.Pages
 
         private bool IsEmailAlreadyRegistered(string email)
         {
-            string filePath = @"C:\Users\LENOVO\Downloads\Data_317.txt";
+            string filePath = @"C:\Users\ahad1\Downloads\confidentials.txt";
 
             try
             {

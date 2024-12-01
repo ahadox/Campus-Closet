@@ -67,10 +67,9 @@ namespace Campuscloset.Pages
             var itemImage = new Image
             {
                 Source = string.IsNullOrWhiteSpace(item.ImagePath) ? "placeholder.png" : item.ImagePath,
-                HeightRequest = 200,
-                WidthRequest = 200,
+                VerticalOptions = LayoutOptions.Fill,
                 Aspect = Aspect.AspectFill,
-                HorizontalOptions = LayoutOptions.Center
+                HorizontalOptions = LayoutOptions.Fill
             };
 
             // Create a label for the item name
@@ -108,7 +107,7 @@ namespace Campuscloset.Pages
                 HasShadow = true,
                 Padding = new Thickness(5),
                 Content = cardLayout,
-                BackgroundColor = Colors.Beige
+                
 
             };
         }
