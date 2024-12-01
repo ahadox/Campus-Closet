@@ -103,7 +103,7 @@ namespace Campuscloset.Pages
             // Wrap the layout in a frame to create a card effect
             return new Frame
             {
-                BorderColor = Colors.LightGrey,
+                
                 CornerRadius = 8,
                 HasShadow = true,
                 Padding = new Thickness(5),
