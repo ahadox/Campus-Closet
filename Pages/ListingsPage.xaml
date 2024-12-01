@@ -3,16 +3,23 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Campuscloset.Pages.ListingsPage"
              Title="Listings"
-             BackgroundColor="Beige">
+             BackgroundColor="{DynamicResource DynamicBackgroundColor}">
 
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout Padding="70" Spacing="50" BackgroundColor="Beige">
+            <StackLayout Padding="70" Spacing="50" BackgroundColor="{DynamicResource DynamicBackgroundColor}">
                 <!-- Page Title -->
-                <Label Text="YOUR LISTINGS" FontSize="30" FontAttributes="Bold" TextColor="Black" HorizontalOptions="Center" />
+                <Label Text="YOUR LISTINGS" 
+                       FontSize="30" 
+                       FontAttributes="Bold" 
+                       TextColor="{DynamicResource DynamicTextColor}" 
+                       HorizontalOptions="Center" />
 
                 <!-- Dynamic Grid to display items -->
-                <Grid x:Name="ItemsGrid" ColumnSpacing="70" RowSpacing="70" BackgroundColor="Beige">
+                <Grid x:Name="ItemsGrid" 
+                      ColumnSpacing="70" 
+                      RowSpacing="70" 
+                      BackgroundColor="{DynamicResource DynamicBackgroundColor}">
                     <!-- Items dynamically added in code-behind -->
                 </Grid>
             </StackLayout>

@@ -44,7 +44,7 @@
     <SolidColorBrush x:Key="Gray950Brush" Color="{StaticResource Gray950}"/>
 
     <!-- Light Theme Colors -->
-    <Color x:Key="BackgroundColorLight">#F7F5EF</Color>
+    <Color x:Key="BackgroundColorLight">#F5F5DC</Color>
     <Color x:Key="TextColorLight">#000000</Color>
 
     <!-- Dark Theme Colors -->
