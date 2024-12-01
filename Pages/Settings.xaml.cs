@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using Microsoft.Maui.Controls;
 using Campuscloset.Services;
 using Campuscloset.Models;
@@ -7,93 +8,55 @@ namespace Campuscloset.Pages
 {
     public partial class Settings : ContentPage
     {
-        private readonly JsonStorageService _storageService = new JsonStorageService();
+        private readonly string filePath = @"C:\Users\LENOVO\Downloads\Data_317.txt"; // Update this path if needed
 
         public Settings()
         {
             InitializeComponent();
-
-            // Load saved settings
-            var settings = _storageService.LoadUserSettings();
-
-            // Display saved settings on the page
-            NameEntry.Text = settings.UserName;
-            EmailEntry.Text = settings.UserEmail;
-
-            // Set the theme
-            if (settings.Theme == "Dark")
-            {
-                Application.Current.Resources["DynamicBackgroundColor"] = Application.Current.Resources["BackgroundColorDark"];
-                Application.Current.Resources["DynamicTextColor"] = Application.Current.Resources["TextColorDark"];
-            }
-            else
-            {
-                Application.Current.Resources["DynamicBackgroundColor"] = Application.Current.Resources["BackgroundColorLight"];
-                Application.Current.Resources["DynamicTextColor"] = Application.Current.Resources["TextColorLight"];
-            }
-
-            // Preselect the theme RadioButtons
-            if (settings.Theme == "Dark")
-            {
-                ((RadioButton)this.FindByName("DarkRadioButton")).IsChecked = true;
-            }
-            else
-            {
-                ((RadioButton)this.FindByName("LightRadioButton")).IsChecked = true;
-            }
-
-            // Preselect the notification RadioButtons
-            if (settings.Notifications)
-            {
-                ((RadioButton)this.FindByName("OnRadioButton")).IsChecked = true;
-            }
-            else
-            {
-                ((RadioButton)this.FindByName("OffRadioButton")).IsChecked = true;
-            }
-            // Load saved profile photo
-            if (!string.IsNullOrWhiteSpace(settings.ProfilePhotoPath) && File.Exists(settings.ProfilePhotoPath))
-            {
-                ProfilePhotoButton.Source = ImageSource.FromFile(settings.ProfilePhotoPath);
-            }
+            LoadUserSettings();
         }
 
-        // Event handler for Theme selection
-        private void OnThemeChanged(object sender, CheckedChangedEventArgs e)
+        private void LoadUserSettings()
         {
-            if (e.Value) // If this RadioButton is selected
+            try
             {
-                var selectedTheme = ((RadioButton)sender).Value.ToString();
+                // Check if the file exists
+                if (File.Exists(filePath))
+                {
+                    string name = string.Empty;
+                    string email = string.Empty;
 
-                if (selectedTheme == "Light")
-                {
-                    // Update to Light Theme
-                    Application.Current.Resources["DynamicBackgroundColor"] = Application.Current.Resources["BackgroundColorLight"];
-                    Application.Current.Resources["DynamicTextColor"] = Application.Current.Resources["TextColorLight"];
+                    // Read data from the file
+                    string[] lines = File.ReadAllLines(filePath);
+                    foreach (var line in lines)
+                    {
+                        if (line.StartsWith("Name: "))
+                            name = line.Substring("Name: ".Length).Trim();
+
+                        if (line.StartsWith("Email: "))
+                            email = line.Substring("Email: ".Length).Trim();
+                    }
+
+                    // Prepopulate settings fields
+                    NameEntry.Text = name;
+                    EmailEntry.Text = email;
                 }
-                else if (selectedTheme == "Dark")
+                else
                 {
-                    // Update to Dark Theme
-                    Application.Current.Resources["DynamicBackgroundColor"] = Application.Current.Resources["BackgroundColorDark"];
-                    Application.Current.Resources["DynamicTextColor"] = Application.Current.Resources["TextColorDark"];
+                    Console.WriteLine("User data file not found. Creating a new one after saving.");
                 }
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error loading user settings: {ex.Message}");
+            }
         }
 
-        // Event handler for Notifications toggle
-        private void OnNotificationChanged(object sender, CheckedChangedEventArgs e)
-        {
-            // Notifications toggle logic
-            bool isToggled = ((RadioButton)sender).Value.ToString() == "On";
-            DisplayAlert("Notification", isToggled ? "Notifications Enabled" : "Notifications Disabled", "OK");
-        }
-
-        // Event handler for Save button
         private async void OnSaveButtonClicked(object sender, EventArgs e)
         {
             // Get input values
-            var name = NameEntry.Text;
-            var email = EmailEntry.Text;
+            string name = NameEntry.Text;
+            string email = EmailEntry.Text;
 
             // Perform validation
             if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(email))
@@ -102,51 +65,102 @@ namespace Campuscloset.Pages
                 return;
             }
 
-            // Get the current profile photo path
-            var currentPhotoPath = Preferences.ContainsKey("UserPhotoPath")
-                ? Preferences.Get("UserPhotoPath", string.Empty)
-                : string.Empty;
-
-            // Save to JSON using UserSettings
-            var settings = new UserSettings
+            // Save the updated user data to the file
+            try
             {
-                UserName = name,
-                UserEmail = email,
-                Theme = ((RadioButton)this.FindByName("DarkRadioButton")).IsChecked ? "Dark" : "Light",
-                Notifications = ((RadioButton)this.FindByName("OnRadioButton")).IsChecked,
-                ProfilePhotoPath = currentPhotoPath // Include the photo path
-            };
+                string[] lines = File.Exists(filePath) ? File.ReadAllLines(filePath) : new string[0];
 
-            // Use the JSON storage service to save the settings
-            _storageService.SaveUserSettings(settings);
+                using (StreamWriter writer = new StreamWriter(filePath))
+                {
+                    foreach (string line in lines)
+                    {
+                        if (line.StartsWith("Name: "))
+                            writer.WriteLine($"Name: {name}");
+                        else if (line.StartsWith("Email: "))
+                            writer.WriteLine($"Email: {email}");
+                        else
+                            writer.WriteLine(line); // Retain other lines (like password)
+                    }
 
-            // Provide feedback to the user
-            await DisplayAlert("Success", "Settings saved successfully.", "OK");
+                    // If the file is new or missing the keys, add them
+                    if (!lines.ToString().Contains("Name: "))
+                        writer.WriteLine($"Name: {name}");
+                    if (!lines.ToString().Contains("Email: "))
+                        writer.WriteLine($"Email: {email}");
+                }
+
+                await DisplayAlert("Success", "Settings updated successfully.", "OK");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error saving user settings: {ex.Message}");
+                await DisplayAlert("Error", "Failed to save settings.", "OK");
+            }
         }
 
+        private void OnThemeChanged(object sender, CheckedChangedEventArgs e)
+        {
+            if (e.Value) // If the RadioButton is selected
+            {
+                string selectedTheme = ((RadioButton)sender).Value.ToString();
+                if (selectedTheme == "Light")
+                {
+                    Application.Current.Resources["DynamicBackgroundColor"] = Application.Current.Resources["BackgroundColorLight"];
+                    Application.Current.Resources["DynamicTextColor"] = Application.Current.Resources["TextColorLight"];
+                }
+                else if (selectedTheme == "Dark")
+                {
+                    Application.Current.Resources["DynamicBackgroundColor"] = Application.Current.Resources["BackgroundColorDark"];
+                    Application.Current.Resources["DynamicTextColor"] = Application.Current.Resources["TextColorDark"];
+                }
+            }
+        }
 
-        // Event handler for Photo change
+        private void OnNotificationChanged(object sender, CheckedChangedEventArgs e)
+        {
+            bool notificationsEnabled = ((RadioButton)sender).Value.ToString() == "On";
+            DisplayAlert("Notification", notificationsEnabled ? "Notifications Enabled" : "Notifications Disabled", "OK");
+        }
+
         private async void OnChangePhotoClicked(object sender, EventArgs e)
         {
             var result = await FilePicker.PickAsync(new PickOptions
             {
-                PickerTitle = "Select a photo",
-                FileTypes = FilePickerFileType.Images // Allow only image files
-
+                PickerTitle = "Select a Profile Photo",
+                FileTypes = FilePickerFileType.Images
             });
 
             if (result != null)
             {
-                // Save photo path or process it further
-                var filePath = result.FullPath;
+                try
+                {
+                    // Save photo path to user settings
+                    var filePath = result.FullPath;
 
-                // Update ImageButton Source to display the new photo
-                ProfilePhotoButton.Source = ImageSource.FromFile(filePath);
+                    // Update UI
+                    ProfilePhotoButton.Source = ImageSource.FromFile(filePath);
 
-                // Save the file path to settings
-                var settings = _storageService.LoadUserSettings();
-                settings.ProfilePhotoPath = filePath; // Add ProfilePhotoPath to UserSettings
-                _storageService.SaveUserSettings(settings);
+                    // Save photo path to the file
+                    string[] lines = File.Exists(filePath) ? File.ReadAllLines(filePath) : new string[0];
+                    using (StreamWriter writer = new StreamWriter(filePath))
+                    {
+                        foreach (var line in lines)
+                        {
+                            if (line.StartsWith("ProfilePhotoPath: "))
+                                writer.WriteLine($"ProfilePhotoPath: {filePath}");
+                            else
+                                writer.WriteLine(line);
+                        }
+
+                        if (!lines.ToString().Contains("ProfilePhotoPath: "))
+                            writer.WriteLine($"ProfilePhotoPath: {filePath}");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error saving profile photo: {ex.Message}");
+                    await DisplayAlert("Error", "Failed to save profile photo.", "OK");
+                }
             }
         }
     }
