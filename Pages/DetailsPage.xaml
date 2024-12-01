@@ -17,16 +17,6 @@
                    Margin="0,0,0,30" />
             <!-- Increased margin below the title -->
 
-            <!-- Item Name Section -->
-            <Label Grid.Row="1" Grid.Column="0"
-                   Text="{Binding Name}"
-                   FontSize="35"
-                   FontAttributes="Bold"
-                   HorizontalOptions="Center"
-                   TextColor="{DynamicResource DynamicTextColor}"
-                   Margin="0,60,0,40" />
-            <!-- Increased spacing above and below the item name -->
-
             <!-- Content Section -->
             <Grid RowDefinitions="Auto" ColumnDefinitions="2*, 3*" Padding="10">
                 <!-- Item Image -->
@@ -40,15 +30,24 @@
 
                 <!-- Item Details -->
                 <VerticalStackLayout Grid.Row="0" Grid.Column="1" Spacing="40">
-                    <!-- Increased spacing between sections -->
+                    <!-- Item Name -->
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="ITEM NAME"
+                               FontSize="20"
+                               FontAttributes="Bold"
+                               Margin="0,150,0,0" 
+                               TextColor="{DynamicResource DynamicTextColor}" />
+                        <Label Text="{Binding Name}"
+                               FontSize="19"
+                               TextColor="{DynamicResource DynamicTextColor}" />
+                    </VerticalStackLayout>
 
                     <!-- Item Price -->
                     <VerticalStackLayout Spacing="10">
                         <Label Text="PRICE"
-                               FontSize="23"
+                               FontSize="20"
                                FontAttributes="Bold"
-                               TextColor="{DynamicResource DynamicTextColor}" 
-                               Margin="0,120,0,10" />
+                               TextColor="{DynamicResource DynamicTextColor}" />
 
                         <Frame BorderColor="#D3AC69"
                                CornerRadius="10"
@@ -56,7 +55,7 @@
                                HasShadow="True"
                                BackgroundColor="{DynamicResource DynamicBackgroundColor}">
                             <Label Text="{Binding Price, StringFormat='${0:F2}'}"
-                                   FontSize="28"
+                                   FontSize="19"
                                    TextColor="#D3AC69" />
                         </Frame>
                     </VerticalStackLayout>
@@ -64,18 +63,18 @@
                     <!-- Condition -->
                     <VerticalStackLayout Spacing="10">
                         <Label Text="CONDITION OF THE ITEM"
-                               FontSize="26"
+                               FontSize="20"
                                FontAttributes="Bold"
                                TextColor="{DynamicResource DynamicTextColor}" />
                         <Label Text="{Binding Condition}"
-                               FontSize="26"
+                               FontSize="19"
                                TextColor="{DynamicResource DynamicTextColor}" />
                     </VerticalStackLayout>
 
                     <!-- Description -->
                     <VerticalStackLayout Spacing="10">
                         <Label Text="DESCRIPTION OF THE ITEM"
-                               FontSize="26"
+                               FontSize="20"
                                FontAttributes="Bold"
                                TextColor="{DynamicResource DynamicTextColor}" />
                         <Frame BorderColor="#D3AC69"
@@ -84,7 +83,7 @@
                                HasShadow="True"
                                BackgroundColor="{DynamicResource DynamicBackgroundColor}">
                             <Label Text="{Binding Description}"
-                                   FontSize="24"
+                                   FontSize="19"
                                    TextColor="{DynamicResource DynamicTextColor}" />
                         </Frame>
                     </VerticalStackLayout>
@@ -92,11 +91,11 @@
                     <!-- Seller Email -->
                     <VerticalStackLayout Spacing="10">
                         <Label Text="SELLER EMAIL:"
-                               FontSize="26"
+                               FontSize="20"
                                FontAttributes="Bold"
                                TextColor="{DynamicResource DynamicTextColor}" />
                         <Button Text="{Binding Email}"
-                                FontSize="24"
+                                FontSize="19"
                                 BackgroundColor="#D3AC69"
                                 TextColor="White"
                                 CornerRadius="10"
