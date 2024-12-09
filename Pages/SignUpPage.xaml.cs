@@ -71,15 +71,15 @@ namespace Campuscloset.Pages
 
         private bool IsEmailAlreadyRegistered(string email)
         {
-            string filePath = @"C:\Users\LENOVO\Downloads\Data_317.txt";
+            string destinationPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "credentials.txt");
 
             try
             {
                 // Check if the file exists
-                if (File.Exists(filePath))
+                if (File.Exists(destinationPath))
                 {
                     // Read all lines from the file
-                    string[] lines = File.ReadAllLines(filePath);
+                    string[] lines = File.ReadAllLines(destinationPath);
 
                     foreach (string line in lines)
                     {
@@ -102,6 +102,7 @@ namespace Campuscloset.Pages
 
             return false; // Email is not registered
         }
+
 
     }
 }

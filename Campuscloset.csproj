@@ -69,7 +69,12 @@
 	  <None Remove="Resources\Images\profile_icon.png" />
 	  <None Remove="Resources\Images\change_photo_image.png" />
 	  <None Remove="Resources\Images\settings_image.png" />
+	  <None Remove="Resources\NewFolder\credentials.txt" />
 
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="Resources\NewFolder\credentials.txt" />
 	</ItemGroup>
 
 	<ItemGroup>

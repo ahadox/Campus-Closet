@@ -6,9 +6,9 @@ public partial class LoginPage : ContentPage
     {
         InitializeComponent();
     }
+
     private async void SignUpButtonClicked(object sender, EventArgs e)
     {
-
         await Navigation.PushAsync(new SignUpPage());
     }
 
@@ -28,18 +28,17 @@ public partial class LoginPage : ContentPage
         }
     }
 
-
     private bool ValidateCredentials(string enteredEmail, string enteredPassword)
     {
-        string filePath = @"C:\Users\LENOVO\Downloads\Data_317.txt";
+        string destinationPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "credentials.txt");
 
         try
         {
             // Check if the file exists
-            if (File.Exists(filePath))
+            if (File.Exists(destinationPath))
             {
                 // Read all lines from the file
-                string[] lines = File.ReadAllLines(filePath);
+                string[] lines = File.ReadAllLines(destinationPath);
 
                 foreach (string line in lines)
                 {
@@ -64,7 +63,6 @@ public partial class LoginPage : ContentPage
                             {
                                 return true;
                             }
-
                         }
                     }
                 }
@@ -77,6 +75,4 @@ public partial class LoginPage : ContentPage
 
         return false;
     }
-
-
 }
