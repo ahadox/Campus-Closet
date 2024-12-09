@@ -10,7 +10,7 @@
 
             </ResourceDictionary.MergedDictionaries>
             <!-- Dynamic Theme Resources -->
-            <Color x:Key="DynamicBackgroundColor">#F7F5EF</Color>
+            <Color x:Key="DynamicBackgroundColor">#F5F5DC</Color>
             <Color x:Key="DynamicTextColor">#000000</Color>
 
         </ResourceDictionary>
