@@ -50,7 +50,7 @@
             </VerticalStackLayout>
 
             <!-- Sign Up Button -->
-            <Button Text="Sign Up" Clicked="SignUpButton" BackgroundColor="Beige" TextColor="#3D3D3D"
+            <Button Text="Sign Up" Clicked="SignUpButton" BackgroundColor="#D3AC69" TextColor="#3D3D3D"
                 FontSize="18" CornerRadius="5" 
                 WidthRequest="100" HorizontalOptions="Center" />
             <Label 

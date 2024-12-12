@@ -20,7 +20,7 @@
                       ColumnSpacing="70" 
                       RowSpacing="70" 
                      >
-                    <!-- Items dynamically added in code-behind -->
+                  
                 </Grid>
             </StackLayout>
         </ScrollView>

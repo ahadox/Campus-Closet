@@ -42,12 +42,7 @@ public partial class LoginPage : ContentPage
 
                 foreach (string line in lines)
                 {
-                    // Each user record is stored in the following format:
-                    // Name: John Doe
-                    // Email: johndoe@example.com
-                    // Password: hashed_password
-
-                    // Split the lines and extract email and password
+                    
                     if (line.StartsWith("Email: "))
                     {
                         string storedEmail = line.Substring("Email: ".Length).Trim();

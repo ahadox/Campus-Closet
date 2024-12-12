@@ -12,7 +12,8 @@
         <Label Text="Enter the OTP Code" 
            FontSize="24" 
            HorizontalOptions="Center" 
-           VerticalOptions="Center" />
+           VerticalOptions="Center" 
+            TextColor="Black"/>
 
         <!-- Large Text Box -->
         <Entry x:Name="txtOtpCode" 
