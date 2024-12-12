@@ -8,7 +8,7 @@ namespace Campuscloset.Pages
 {
     public partial class Settings : ContentPage
     {
-        private readonly string filePath = @"C:\Users\LENOVO\Downloads\Data_317.txt"; // Update this path if needed
+        private string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "credentials.txt");
 
         public Settings()
         {
