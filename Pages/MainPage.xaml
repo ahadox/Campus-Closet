@@ -66,28 +66,28 @@
                                 <StackLayout Grid.Column="0" Spacing="5" VerticalOptions="Center">
                                     <!-- Item Name -->
                                     <Label Text="{Binding Name}" 
-                   FontSize="16"
-                   FontAttributes="Bold" 
-                   TextColor="Black" 
-                   Margin="0,5,0,0" />
+                                           FontSize="16"
+                                           FontAttributes="Bold" 
+                                           TextColor="{DynamicResource DynamicTextColor}" 
+                                           Margin="0,5,0,0" />
 
                                     <!-- Item Price -->
                                     <Label Text="{Binding Price, StringFormat='${0:F2}'}" 
-                   FontSize="14"
-                   TextColor="#D3AC69" />
+                                           FontSize="14"
+                                           TextColor="{DynamicResource DynamicTextColor}" />
                                 </StackLayout>
 
                                 <!-- Right Section: Button -->
                                 <Button Text="Details"
-                Grid.Column="1"
-                BackgroundColor="#D3AC69"
-                TextColor="White"
-                CornerRadius="10"
-                HeightRequest="30" 
-                FontSize="12" 
-                VerticalOptions="Center"
-                HorizontalOptions="End"
-                Clicked="Button_Clicked_1" />
+                                        Grid.Column="1"
+                                        BackgroundColor="#D3AC69"
+                                        TextColor="White"
+                                        CornerRadius="10"
+                                        HeightRequest="30" 
+                                        FontSize="12" 
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="End"
+                                        Clicked="Button_Clicked_1" />
                             </Grid>
                         </StackLayout>
                     </Frame>
